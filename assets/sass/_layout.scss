@@ -19,11 +19,14 @@
 // Header
 // ==========================================================================
 #header {
+        position: fixed;
+        width: 100%;
+        z-index: 999;
     //
     // Navbar
     //
     #main-navigation {
-        margin: 20px 0;
+        margin: 0px 0;
     }
     //
     // Title, description and image
@@ -41,7 +44,10 @@
 // ==========================================================================
 // Wrapper
 // ==========================================================================
-#wrapper {}
+#wrapper {
+    position: relative;
+    z-index: 99;
+}
 
 // ==========================================================================
 // Content
@@ -60,6 +66,143 @@
                 border: 1px dashed $brand-info;
             }
         }
+    }
+}
+//
+//seções da front-page
+//
+.secao-front{
+    background-color: #000;
+    height: 100vh;
+    background-attachment:fixed;
+    background-size: cover;
+    background-position:center;
+    position: relative;
+
+}
+#inicio{
+    background-image: url("../images/abertura.png");
+}
+#piano{
+        background-image: url("../images/piano.jpg");
+
+}
+#sound-trilha{
+    height: 77vw;
+
+    .trabalho{
+         > img{
+        width: 100%;
+        display: inline-block;
+        }
+        img{
+            position:absolute;
+            top:0;
+            z-index: 99;
+        }
+    }
+    #trilhas{
+        > img{
+            transform: translateY(-28%);    
+        }
+        a img{
+            right: 14%;
+            top: 5%;
+        }
+        
+    }
+    #soundart{
+        a img{
+            top: 29%;
+            left: 3%;
+        }
+    }
+}
+#transicao{
+    background-image: url('../images/fundo-transicao.jpg');
+    top: -22vw;
+    z-index: 98;
+    position: relative;
+}
+#contato{
+    -webkit-box-shadow: 0px -3px 5px 0px rgba(50, 50, 50, 0.74);
+    -moz-box-shadow:    0px -3px 5px 0px rgba(50, 50, 50, 0.74);
+    box-shadow:         0px -3px 5px 0px rgba(50, 50, 50, 0.74);
+    z-index: 99;
+    background-image: url('../images/fundo-contato.jpg');
+    background-attachment: scroll;
+    top:-22vw;
+    .titulo-contato{
+        margin:0 auto;
+        display: block;
+    }
+    #interno-contato{
+        max-width:1200px;
+        margin:30px auto;
+        display: block;
+        #form-contato{
+            input,textarea{
+                    border: solid 2px #000;
+                    border-radius:10px;
+                    color:#000;
+                    background-color: rgba(255, 255, 255, 0.34);
+                }
+            form{
+                display: inline-block;
+
+            }
+            text-align: center;
+            p{
+                text-align: left;
+            }
+        }
+        #socials-contato{
+            #facebook-feed{
+                padding-left: 30px;
+                .social-link {
+                display: inline-block;
+
+                }
+                .social-link-image {
+                    img{
+                        border-radius:100px;
+                        width:100px;
+                        border: solid 5px #006738;
+                    }
+                    z-index: 99;
+                }
+                .link-facebook{
+                    margin:10px;
+                }
+                
+        
+                .social-link-text {
+                    border: solid 2px #000;
+                    border-radius:10px;
+                    color:#000;
+                    padding:20px;
+                    width: initial;
+                    margin:20px;
+                    background-color: rgba(255, 255, 255, 0.34);
+                    top: -50px;
+                    left: 36px; 
+                    max-width: 433px;
+               
+                }
+                .owl-item:nth-child(2){
+                     .social-link-text {
+                        top: -57px;
+                        left: -47px;
+                    }
+                     .social-link img, .social-link {
+                       float:right;
+                     }                
+                }
+            }
+            
+        }
+        
+
     }
 }
 
@@ -130,4 +273,398 @@ html {
 
 body {
     margin-bottom: 70px;
+}
+
+/* Owl Carousel Bootstrap Custom CSS */
+
+/* Header Navigation */
+#top-nav{
+    border-bottom: 1px solid #e1e6dd;
+    background: #FFF;
+    -webkit-transform: translateZ(0)
+
+}
+#top-nav.navbar{
+    margin-bottom: 0px;
+
+}
+#top-nav.navbar .nav{
+    margin: 8px 0px;
+}
+    
+#top-nav.navbar .nav > li > a {
+    padding: 6px 12px;
+    margin: 0px;
+    text-transform: uppercase;
+    font-weight: 400;
+
+    -webkit-transition: background-color 200ms ease;
+    -moz-transition: background-color 200ms ease;
+    -o-transition: background-color 200ms ease;
+    transition: background-color 200ms ease;
+}
+#top-nav.navbar .nav > li > a.download{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#top-nav.navbar .nav > li > a.download-on{
+    background-color: #ff8a3c;
+    color: #ffffff;
+}
+#top-nav.navbar .nav > li > a.download-on:hover{
+    color: #ffffff;
+    background-color: #ff7920;
+}
+.btn-navbar span.icon-bar{
+    margin-top: 0px;
+}
+
+/* Responsive Stuff */
+
+
+@media (max-width: 979px) {
+    .navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+    padding: 0px;
+    }
+    .navbar-fixed-top, .navbar-fixed-bottom {
+    position: fixed;
+    }
+}
+@media (max-width: 768px) {
+    .navbar.navbar-fixed-top{
+        position: static;
+    }
+    .btn.btn-navbar{
+        margin: 9px 20px 9px 8px;
+        padding: 10px 10px;
+    }
+    .nav-collapse .nav > li{
+        border-top: 1px solid #e1e6dd;
+        text-align: center
+    }
+    #header .logo{
+        margin-top:40px;
+        margin: 20px auto 0px;
+        float: none;
+        height: 150px;
+    }
+    #header {
+        text-align: center;
+        padding: 60px 0px 30px;
+    }
+    #header h1{
+        margin: 10px 0;
+    }
+    #header h3{
+    margin-bottom: 10px;
+    width: auto;
+    padding: 0px 20px;
+    }
+    h1 {
+        font-size: 38px;
+        margin: 20px 0;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    h4 {
+        font-size: 16px;
+    }
+    h5 {
+        font-size: 13px;
+    }
+    h6 {
+        font-size: 12px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+    .navbar-fixed-top, .navbar-fixed-bottom {
+    position: static;
+    }
+    #header {
+        text-align: center;
+        padding: 20px 0px 20px;
+    }
+    #header .logo{
+        margin-top:0px;
+    }
+
+}
+
+/*
+NO MORE TABLES!! ;)
+*/
+@media (max-width: 767px) {
+
+    .hp-table table, .hp-table thead, .hp-table .hp-table tbody, .hp-table th, .hp-table td, .hp-table tr { 
+        display: block; 
+    }
+    .hp-table thead tr { 
+        display: none;
+    }
+    .hp-table tr { border: 0px solid #ccc; margin-bottom: 10px; }
+    
+    .hp-table td:before { 
+        top: 6px;
+        left: 6px;
+        width: 45%; 
+        padding-right: 10px; 
+        white-space: nowrap;
+    }
+
+    .hp-table td:nth-of-type(2):before { 
+        content: "Default:";
+        font-weight: bold;
+    }
+    .hp-table td:nth-of-type(3):before { 
+        content: "Type:";
+        font-weight: bold;
+    }
+    .hp-table td:nth-of-type(4):before { 
+        content: "Description:";
+        font-weight: bold;
+    }
+}
+
+/* 
+ *  Core Owl Carousel CSS File
+ *  v1.3.3
+ */
+
+/* clearfix */
+.owl-carousel .owl-wrapper:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+/* display none until init */
+.owl-carousel{
+    display: none;
+    position: relative;
+    width: 100%;
+    -ms-touch-action: pan-y;
+}
+.owl-carousel .owl-wrapper{
+    display: none;
+    position: relative;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+}
+.owl-carousel .owl-wrapper-outer{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.owl-carousel .owl-wrapper-outer.autoHeight{
+    -webkit-transition: height 500ms ease-in-out;
+    -moz-transition: height 500ms ease-in-out;
+    -ms-transition: height 500ms ease-in-out;
+    -o-transition: height 500ms ease-in-out;
+    transition: height 500ms ease-in-out;
+}
+    
+.owl-carousel .owl-item{
+    float: left;
+}
+.owl-controls .owl-page,
+.owl-controls .owl-buttons div{
+    cursor: pointer;
+}
+.owl-controls {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* mouse grab icon */
+.grabbing { 
+    cursor:url(grabbing.png) 8 8, move;
+}
+
+/* fix */
+.owl-carousel  .owl-wrapper,
+.owl-carousel  .owl-item{
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility:    hidden;
+    -ms-backface-visibility:     hidden;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+}
+
+/* 
+ *  Owl Carousel CSS3 Transitions 
+ *  v1.3.2
+ */
+
+.owl-origin {
+    -webkit-perspective: 1200px;
+    -webkit-perspective-origin-x : 50%;
+    -webkit-perspective-origin-y : 50%;
+    -moz-perspective : 1200px;
+    -moz-perspective-origin-x : 50%;
+    -moz-perspective-origin-y : 50%;
+    perspective : 1200px;
+}
+/* fade */
+.owl-fade-out {
+  z-index: 10;
+  -webkit-animation: fadeOut .7s both ease;
+  -moz-animation: fadeOut .7s both ease;
+  animation: fadeOut .7s both ease;
+}
+.owl-fade-in {
+  -webkit-animation: fadeIn .7s both ease;
+  -moz-animation: fadeIn .7s both ease;
+  animation: fadeIn .7s both ease;
+}
+/* backSlide */
+.owl-backSlide-out {
+  -webkit-animation: backSlideOut 1s both ease;
+  -moz-animation: backSlideOut 1s both ease;
+  animation: backSlideOut 1s both ease;
+}
+.owl-backSlide-in {
+  -webkit-animation: backSlideIn 1s both ease;
+  -moz-animation: backSlideIn 1s both ease;
+  animation: backSlideIn 1s both ease;
+}
+/* goDown */
+.owl-goDown-out {
+  -webkit-animation: scaleToFade .7s ease both;
+  -moz-animation: scaleToFade .7s ease both;
+  animation: scaleToFade .7s ease both;
+}
+.owl-goDown-in {
+  -webkit-animation: goDown .6s ease both;
+  -moz-animation: goDown .6s ease both;
+  animation: goDown .6s ease both;
+}
+/* scaleUp */
+.owl-fadeUp-in {
+  -webkit-animation: scaleUpFrom .5s ease both;
+  -moz-animation: scaleUpFrom .5s ease both;
+  animation: scaleUpFrom .5s ease both;
+}
+
+.owl-fadeUp-out {
+  -webkit-animation: scaleUpTo .5s ease both;
+  -moz-animation: scaleUpTo .5s ease both;
+  animation: scaleUpTo .5s ease both;
+}
+/* Keyframes */
+/*empty*/
+@-webkit-keyframes empty {
+  0% {opacity: 1}
+}
+@-moz-keyframes empty {
+  0% {opacity: 1}
+}
+@keyframes empty {
+  0% {opacity: 1}
+}
+@-webkit-keyframes fadeIn {
+  0% { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes fadeIn {
+  0% { opacity:0; }
+  100% { opacity:1; }
+}
+@keyframes fadeIn {
+  0% { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes fadeOut {
+  0% { opacity:1; }
+  100% { opacity:0; }
+}
+@-moz-keyframes fadeOut {
+  0% { opacity:1; }
+  100% { opacity:0; }
+}
+@keyframes fadeOut {
+  0% { opacity:1; }
+  100% { opacity:0; }
+}
+@-webkit-keyframes backSlideOut {
+  25% { opacity: .5; -webkit-transform: translateZ(-500px); }
+  75% { opacity: .5; -webkit-transform: translateZ(-500px) translateX(-200%); }
+  100% { opacity: .5; -webkit-transform: translateZ(-500px) translateX(-200%); }
+}
+@-moz-keyframes backSlideOut {
+  25% { opacity: .5; -moz-transform: translateZ(-500px); }
+  75% { opacity: .5; -moz-transform: translateZ(-500px) translateX(-200%); }
+  100% { opacity: .5; -moz-transform: translateZ(-500px) translateX(-200%); }
+}
+@keyframes backSlideOut {
+  25% { opacity: .5; transform: translateZ(-500px); }
+  75% { opacity: .5; transform: translateZ(-500px) translateX(-200%); }
+  100% { opacity: .5; transform: translateZ(-500px) translateX(-200%); }
+}
+@-webkit-keyframes backSlideIn {
+  0%, 25% { opacity: .5; -webkit-transform: translateZ(-500px) translateX(200%); }
+  75% { opacity: .5; -webkit-transform: translateZ(-500px); }
+  100% { opacity: 1; -webkit-transform: translateZ(0) translateX(0); }
+}
+@-moz-keyframes backSlideIn {
+  0%, 25% { opacity: .5; -moz-transform: translateZ(-500px) translateX(200%); }
+  75% { opacity: .5; -moz-transform: translateZ(-500px); }
+  100% { opacity: 1; -moz-transform: translateZ(0) translateX(0); }
+}
+@keyframes backSlideIn {
+  0%, 25% { opacity: .5; transform: translateZ(-500px) translateX(200%); }
+  75% { opacity: .5; transform: translateZ(-500px); }
+  100% { opacity: 1; transform: translateZ(0) translateX(0); }
+}
+@-webkit-keyframes scaleToFade {
+  to { opacity: 0; -webkit-transform: scale(.8); }
+}
+@-moz-keyframes scaleToFade {
+  to { opacity: 0; -moz-transform: scale(.8); }
+}
+@keyframes scaleToFade {
+  to { opacity: 0; transform: scale(.8); }
+}
+@-webkit-keyframes goDown {
+  from { -webkit-transform: translateY(-100%); }
+}
+@-moz-keyframes goDown {
+  from { -moz-transform: translateY(-100%); }
+}
+@keyframes goDown {
+  from { transform: translateY(-100%); }
+}
+
+@-webkit-keyframes scaleUpFrom {
+  from { opacity: 0; -webkit-transform: scale(1.5); }
+}
+@-moz-keyframes scaleUpFrom {
+  from { opacity: 0; -moz-transform: scale(1.5); }
+}
+@keyframes scaleUpFrom {
+  from { opacity: 0; transform: scale(1.5); }
+}
+
+@-webkit-keyframes scaleUpTo {
+  to { opacity: 0; -webkit-transform: scale(1.5); }
+}
+@-moz-keyframes scaleUpTo {
+  to { opacity: 0; -moz-transform: scale(1.5); }
+}
+@keyframes scaleUpTo {
+  to { opacity: 0; transform: scale(1.5); }
 }

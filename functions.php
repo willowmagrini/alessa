@@ -28,11 +28,22 @@ require_once get_template_directory() . '/core/classes/class-bootstrap-nav.php';
 require_once get_template_directory() . '/core/classes/class-shortcodes.php';
 //require_once get_template_directory() . '/core/classes/class-shortcodes-menu.php';
 require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.php';
-// require_once get_template_directory() . '/core/classes/class-theme-options.php';
+require_once get_template_directory() . '/core/classes/class-theme-options.php';
 // require_once get_template_directory() . '/core/classes/class-options-helper.php';
 require_once get_template_directory() . '/core/classes/class-post-type.php';
 require_once get_template_directory() . '/inc/custom-post.php';
-
+require_once get_template_directory() . '/inc/options.php';
+require_once get_template_directory() . '/inc/brasa-social-feed.php';
+$options = get_option('social');
+global $brasa_social_feed;
+$brasa_social_feed = new Brasa_Social_Feed(
+	array(
+		'facebook_api_url' => $options['facebook_api_url'],
+		'facebook_auth'    => $options['facebook_auth'],
+		'youtube_auth'     => $options['youtube_auth'],
+		'youtube_user'     => $options['youtube_user']
+	)
+);
 // require_once get_template_directory() . '/core/classes/class-taxonomy.php';
 // require_once get_template_directory() . '/core/classes/class-metabox.php';
 // require_once get_template_directory() . '/core/classes/abstracts/abstract-front-end-form.php';
@@ -240,7 +251,12 @@ function odin_enqueue_scripts() {
 		wp_enqueue_script( 'odin-main', $template_url . '/assets/js/main.js', array(), null, true );
 	} else {
 		// Grunt main file with Bootstrap, FitVids and others libs.
+
+
+		$options = get_option('social');
 		wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
+		wp_localize_script( 'odin-main-min', 'odin_main', array('ajaxurl' => admin_url( 'admin-ajax.php' ), 'twitter_widget_id' => $options['twitter_widget_id'] ) );
+
 	}
 
 	// Grunt watch livereload in the browser.

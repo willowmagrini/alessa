@@ -165,13 +165,13 @@ module.exports = function( grunt ) {
 		'ftp-deploy': {
 			build: {
 				auth: {
-					host: 'ftp.SEU-SITE.com',
+					host: 'ftp.domain.com',
 					port: 21,
 					authPath: '../.ftppass',
-					authKey: 'key_for_deploy'
+					authKey: '@Portuguesa83'
 				},
 				src: '../',
-				dest: '/PATH/wp-content/themes/odin',
+				dest: '/public_html/Willow/alessa/wp-content/themes/alessa',
 				exclusions: [
 					'../**.DS_Store',
 					'../**Thumbs.db',
