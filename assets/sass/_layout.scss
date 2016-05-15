@@ -22,6 +22,10 @@
         position: fixed;
         width: 100%;
         z-index: 999;
+        top: 0;
+        background: #000;
+
+
     //
     // Navbar
     //
@@ -57,6 +61,9 @@
 //
 // Home
 //
+ a:hover{
+        text-decoration:none;
+    }
 .home {
     #content {
         .post {
@@ -71,13 +78,18 @@
 //
 //seções da front-page
 //
+.interno {
+        max-width:1200px;
+        margin:0 auto;
+    }
 .secao-front{
-    background-color: #000;
+    background-color: transparent;
     height: 100vh;
     background-attachment:fixed;
     background-size: cover;
     background-position:center;
     position: relative;
+    
 
 }
 #inicio{
@@ -89,7 +101,12 @@
 }
 #sound-trilha{
     height: 77vw;
-
+    #conteudo-sound-trilha.fechado{
+        height:0px   
+    }
+    #conteudo-sound-trilha.aberto{
+        height:initial;
+    }
     .trabalho{
          > img{
         width: 100%;
@@ -100,10 +117,13 @@
             top:0;
             z-index: 99;
         }
+        a img{
+           z-index: 999;
+        }
     }
     #trilhas{
         > img{
-            transform: translateY(-28%);    
+        transform: translateY(-28.5%);
         }
         a img{
             right: 14%;
@@ -113,16 +133,26 @@
     }
     #soundart{
         a img{
-            top: 29%;
+            top: 53%;
             left: 3%;
         }
     }
 }
-#transicao{
+#conteudo-trabalhos{
+    z-index: 999;
+    padding-top: 27vw;
     background-image: url('../images/fundo-transicao.jpg');
-    top: -22vw;
     z-index: 98;
     position: relative;
+    text-align: right;
+    h2{
+        font-size:45px;
+    }
+    a{
+        color:#000;
+    }
+
+
 }
 #contato{
     -webkit-box-shadow: 0px -3px 5px 0px rgba(50, 50, 50, 0.74);
@@ -131,13 +161,14 @@
     z-index: 99;
     background-image: url('../images/fundo-contato.jpg');
     background-attachment: scroll;
-    top:-22vw;
+    // top:-22vw;
+    padding-top: 40px;
     .titulo-contato{
         margin:0 auto;
         display: block;
     }
+
     #interno-contato{
-        max-width:1200px;
         margin:30px auto;
         display: block;
         #form-contato{
@@ -146,6 +177,7 @@
                     border-radius:10px;
                     color:#000;
                     background-color: rgba(255, 255, 255, 0.34);
+                    padding:10px;
                 }
             form{
                 display: inline-block;
@@ -172,7 +204,7 @@
                     z-index: 99;
                 }
                 .link-facebook{
-                    margin:10px;
+                    margin:10px 10px 0;
                 }
                 
         
@@ -205,7 +237,154 @@
 
     }
 }
+.single-trilha{
+    background-image: url('../images/single-trilha-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 
+    #wrapper{
+        background-color: rgba(220, 157, 157, 0.14);
+    }
+    h1{
+        color: #000;
+        text-align: center;
+        
+        color: #9B5889;
+
+
+     }
+    p{
+        color: #000;
+    }
+    .anterior-single{
+        span{
+           background-image:url('../images/voltar.png')
+
+        }
+    }
+    .proximo-single{
+        span{
+           background-image:url('../images/play.png')
+
+        }
+    }
+    a{
+        color: #9B5889;
+        
+    }
+    .owl-item {
+        img{
+            border: solid 3px #9B5889;
+        }
+    }
+ }
+ .single-soundart{
+    
+    #wrapper{
+    background-color: rgba(216, 198, 198, 0.32);
+    }
+    background-image: url('../images/single-soundart-background.png');
+     h1{
+        color: #1EA297;
+        }
+    p{
+        color: #000;
+      }
+    a{
+          color: #1EA297;
+      }
+    .owl-item {
+        img{
+            border: solid 3px #1EA297;
+        }
+        
+    }
+    .anterior-single{
+        span{
+           background-image:url('../images/ant-soundart.png')
+
+        }
+    }
+    .proximo-single{
+        span{
+           background-image:url('../images/prox-soundart.png')
+
+        }
+    }
+    
+ }
+.single-soundart, .single-trilha{
+    .paginacao-single{
+        margin-top:50px;
+        font-size: 17px;
+        .anterior-single{
+            float:left;
+    }
+        .proximo-single{
+             float:right;
+        }
+    }
+    
+    .row{
+        padding-top:30px;
+       
+        h1{
+            margin-bottom: 44px;
+            text-align: center;
+            font-size: 54px;
+            text-transform: uppercase;
+        }
+        p{
+            font-size:20px;
+        }
+        a {
+            span{
+            width: 32px;
+            display: inline-block;
+            height: 32px;
+            margin:10px;
+            vertical-align: middle;
+
+            }
+        }
+
+    }
+    .entry-content, .single-soundart-galeria{
+        margin-bottom: 30px;
+        min-height: 100px;
+    }    
+   .fundo{
+        // background-color: rgba(127,127,127,0.5);
+        // width: calc(100vw - 15px);
+        // position: absolute;
+        // top: 0;
+        // min-height: calc(100vh - 102px);
+
+    }
+} 
+.single{
+    .interno{
+        max-width: 800px;
+    }
+
+    #wrapper{
+        margin-top:52px;
+       min-height: calc(100vh - 102px);
+
+    }
+    .gss-info{
+        width:100%;
+    }
+    .owl-item {
+        text-align: center;
+        img{
+            max-width: 80%;
+            margin: 0 auto;
+            border-radius: 20px;        
+        }
+
+    }
+}
 // ==========================================================================
 // Sidebar
 // ==========================================================================
@@ -255,10 +434,12 @@
 //
 // Sticky footer styles
 //
+.front-page #footer {
+   top: -22vw;
+}
 #footer {
     text-align: center;
-    position: absolute;
-    bottom: 0;
+    position: relative;
     width: 100%;
     height: 50px;
     background-color: #f5f5f5;
@@ -272,7 +453,7 @@ html {
 }
 
 body {
-    margin-bottom: 70px;
+    margin-bottom: 0;
 }
 
 /* Owl Carousel Bootstrap Custom CSS */

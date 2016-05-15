@@ -186,7 +186,9 @@ module.exports = function( grunt ) {
 					'../*.sublime-project',
 					'../*.sublime-workspace',
 					'../src/**',
-					'../.ftppass'
+					'../.ftppass',
+					'../core',
+					'../docs'
 				]
 			}
 		},

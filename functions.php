@@ -32,6 +32,7 @@ require_once get_template_directory() . '/core/classes/class-theme-options.php';
 // require_once get_template_directory() . '/core/classes/class-options-helper.php';
 require_once get_template_directory() . '/core/classes/class-post-type.php';
 require_once get_template_directory() . '/inc/custom-post.php';
+require_once get_template_directory() . '/inc/ajax-functions.php';
 require_once get_template_directory() . '/inc/options.php';
 require_once get_template_directory() . '/inc/brasa-social-feed.php';
 $options = get_option('social');
@@ -333,3 +334,10 @@ if ( is_woocommerce_activated() ) {
 	require get_template_directory() . '/inc/woocommerce/functions.php';
 	require get_template_directory() . '/inc/woocommerce/template-tags.php';
 }
+add_image_size('single-galeria', 300, 400, 1 );
+function add_class_attachment_link($html){
+    $postid = get_the_ID();
+    $html = str_replace('<a','<a class="cboxElement"',$html);
+    return $html;
+}
+add_filter('wp_get_attachment_link','add_class_attachment_link',10,1);
