@@ -11,20 +11,23 @@ get_header(); ?>
 		<section class="secao-front" id="sound-trilha">
 			<article class="trabalho" id="soundart">
 				<img src="<?php echo get_template_directory_uri()."/assets/images/fundo-soundart.png"; ?>" alt="">
-				<a data-post-type="soundart" href="#conteudo-trabalhos">
+				<a data-post-type="soundart" href="#ancora">
 					<img src="<?php echo get_template_directory_uri()."/assets/images/link-soundart.png"; ?>" alt="">
 				</a>
 			</article>
 
 			<article class="trabalho" id="trilhas">
 				<img src="<?php echo get_template_directory_uri()."/assets/images/fundo-trilhas.png"; ?>" alt="">
-				<a data-post-type="trilha" href="#conteudo-trabalhos">
-					<img src="<?php echo get_template_directory_uri()."/assets/images/link-trilhas.png"; ?>" alt="">
+				<a data-post-type="trilha" href="#ancora">
+					<?php echo '<img src="'.get_template_directory_uri().'/assets/images/link-trilhas-' .  get_locale(  ) . '.png">'; ?>
+
+					<!-- <img src="<?php echo get_template_directory_uri()."/assets/images/link-trilhas.png"; ?>" alt=""> -->
 				</a>
 
 			</article>
 		</section>
 		<section class=" secao-front "id="conteudo-trabalhos">
+			<div id="ancora"></div>
 			<div class="interno">
 <!-- 				<img src="<?php echo get_template_directory_uri()."/assets/images/ajax-loading.gif"; ?>" alt="">
  -->			</div>
@@ -32,6 +35,61 @@ get_header(); ?>
 		<!-- <section class="secao-front" id="transicao">
 			
 		</section> -->
+		<section class="secao-front" id="linda">
+			<div class="interno">
+				<div class="col-sm-6">
+					<div id="intro-linda">
+						<?php
+							$linda=get_page_by_title( 'linda');
+							echo get_field('texto_inicial', $linda->ID); 
+						?>
+						</p>
+						
+					</div>
+					<div class="linda-post">
+						<?php 
+  							// print_r($linda);
+  							echo get_the_post_thumbnail($linda->ID );
+  							$content= $linda->post_content;
+  							$content = apply_filters('the_content', $content);
+  							echo $content;
+						?>
+						<a target="_blank" href="<?php echo get_field('link_da_materia',$linda->ID);?>">
+							<?php  echo __('Leia a materia completa.', 'odin'); ?>
+						</a>
+						
+					</div>
+				</div>
+				<img  id="img-linda" src="<?php echo get_template_directory_uri()."/assets/images/linda-barras.png"; ?>" alt="">
+
+				<div class="col-sm-6">
+				</div>	
+				<div class="clearfix"></div>
+			</div>
+			
+
+		</section> 
+		<section class="secao-front" id="pianos">
+			<div class="col-sm-6"></div>
+			<div class="col-sm-6"></div>
+
+		</section> 
+		<section class="secao-front" id="agenda">
+			<div class="col-sm-6"></div>
+			<div class="col-sm-6"></div>
+
+		</section> 
+		<section class="secao-front" id="ritaleena">
+			<canvas  id='confetti' >
+			</canvas>
+			<div class="img-release">
+				<img src="<?php echo get_template_directory_uri()."/assets/images/ritaleena.jpg"; ?>" alt="">
+				<h4 class="fotos-release-texto"><a href="#" id="ritafotos"><?php echo __('Fotos', 'odin') ?></a></h4>
+				<h4 class="fotos-release-texto"><a href="#" id="ritalease"><?php  echo __('Release', 'odin') ?></a></h4>
+			</div>
+							
+
+		</section>
 		<section class="secao-front" id="contato">
 			<img class="titulo-contato" src="<?php echo get_template_directory_uri()."/assets/images/titulo-contato.png"; ?>" alt="">
 			<article id="interno-contato" class="row">
@@ -45,8 +103,9 @@ get_header(); ?>
 					 // echo do_shortcode( '[contact-form-7 id="4" title="Formulário de contato 1"]' ); ?>		
 	
 				</div>
-				
 			</article>
+			<div class="clearfix"></div>
+
 		</section>	
 			
 		

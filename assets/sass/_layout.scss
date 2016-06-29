@@ -78,165 +78,246 @@
 //
 //seções da front-page
 //
-.interno {
+.home{
+   .interno {
         max-width:1200px;
         margin:0 auto;
+        margin: 0 auto;
+        padding-bottom: 100px;
+        padding-right: 65px;
+        padding-top: 30px;
     }
-.secao-front{
-    background-color: transparent;
-    height: 100vh;
-    background-attachment:fixed;
-    background-size: cover;
-    background-position:center;
-    position: relative;
-    
-
-}
-#inicio{
-    background-image: url("../images/abertura.png");
-}
-#piano{
-        background-image: url("../images/piano.jpg");
-
-}
-#sound-trilha{
-    height: 77vw;
-    #conteudo-sound-trilha.fechado{
-        height:0px   
-    }
-    #conteudo-sound-trilha.aberto{
-        height:initial;
-    }
-    .trabalho{
-         > img{
-        width: 100%;
-        display: inline-block;
-        }
-        img{
-            position:absolute;
-            top:0;
-            z-index: 99;
-        }
-        a img{
-           z-index: 999;
-        }
-    }
-    #trilhas{
-        > img{
-        transform: translateY(-28.5%);
-        }
-        a img{
-            right: 14%;
-            top: 5%;
-        }
         
+    .secao-front{
+        background-color: transparent;
+        height: 100vh;
+        background-attachment:fixed;
+        background-size: cover;
+        background-position:center;
+        position: relative;
+        
+
     }
-    #soundart{
-        a img{
-            top: 53%;
-            left: 3%;
+    #inicio{
+        background-image: url("../images/abertura.png");
+    }
+    #piano{
+            background-image: url("../images/piano.jpg");
+
+    }
+    #sound-trilha{
+        padding-top: 80px;
+
+        height: 77vw;
+        #conteudo-sound-trilha.fechado{
+            height:0px   
         }
-    }
-}
-#conteudo-trabalhos{
-    z-index: 999;
-    padding-top: 27vw;
-    background-image: url('../images/fundo-transicao.jpg');
-    z-index: 98;
-    position: relative;
-    text-align: right;
-    h2{
-        font-size:45px;
-    }
-    a{
-        color:#000;
-    }
-
-
-}
-#contato{
-    -webkit-box-shadow: 0px -3px 5px 0px rgba(50, 50, 50, 0.74);
-    -moz-box-shadow:    0px -3px 5px 0px rgba(50, 50, 50, 0.74);
-    box-shadow:         0px -3px 5px 0px rgba(50, 50, 50, 0.74);
-    z-index: 99;
-    background-image: url('../images/fundo-contato.jpg');
-    background-attachment: scroll;
-    // top:-22vw;
-    padding-top: 40px;
-    .titulo-contato{
-        margin:0 auto;
-        display: block;
-    }
-
-    #interno-contato{
-        margin:30px auto;
-        display: block;
-        #form-contato{
-            input,textarea{
-                    border: solid 2px #000;
-                    border-radius:10px;
-                    color:#000;
-                    background-color: rgba(255, 255, 255, 0.34);
-                    padding:10px;
-                }
-            form{
+        #conteudo-sound-trilha.aberto{
+            height:initial;
+        }
+        .trabalho{
+             > img{
+                width: 100%;
                 display: inline-block;
+            }
+            img{
+                position:absolute;
+                top:0;
+                z-index: 99;
+            }
+            a img{
+               z-index: 999;
+            }
+        }
+        #trilhas{
+            > img{
+                transform: translateY(-28.5%);
+            }
+            a img{
+                right: 14%;
+                 top: 17%;
+            }
+        
+        }
+        #soundart{
+            a img{
+                top: 46%;
+                left: 3%;
+                    width: 30vw;
 
             }
+        }
+    }
+    #conteudo-trabalhos{
+        z-index: 999;
+        padding-top: 35vw;
+        background-image: url('../images/fundo-transicao.jpg');
+        z-index: 98;
+        position: relative;
+        text-align: right;
+        height: initial;
+        min-height: 110vh;
+
+        h2{
+            font-size:45px;
+        }
+        a{
+            color:#000;
+        }
+
+
+    }
+    #ancora{
+        position: absolute;
+        top: 10vh;
+    }
+    #ritaleena{
+        height: auto;
+        border-top: 12px solid #EB1C22;
+        border-bottom: 12px solid #EB1C22;
+        canvas{
+            position: absolute;
+        }
+        .img-release{
             text-align: center;
-            p{
-                text-align: left;
-            }
-        }
-        #socials-contato{
-            #facebook-feed{
-                padding-left: 30px;
-                .social-link {
+            position: relative;
+            max-width: 600px;
+            width: 25vw;
+            margin: 60px auto 30px;
+            img{
+                width:100%;
+            }   
+            .fotos-release-texto{
                 display: inline-block;
+                text-transform: uppercase;
+                margin: 30px 20px;
+                font-size: 23px;
+                a{
+                    color: #211C1E;
 
                 }
-                .social-link-image {
-                    img{
-                        border-radius:100px;
-                        width:100px;
-                        border: solid 5px #006738;
+            }
+        }
+    }
+    #contato{
+        min-height: 100vh;
+        height: initial;
+        -webkit-box-shadow: 0px -3px 5px 0px rgba(50, 50, 50, 0.74);
+        -moz-box-shadow:    0px -3px 5px 0px rgba(50, 50, 50, 0.74);
+        box-shadow:         0px -3px 5px 0px rgba(50, 50, 50, 0.74);
+        z-index: 99;
+        background-image: url('../images/fundo-contato.jpg');
+        background-attachment: scroll;
+        // top:-22vw;
+        padding-top: 95px;
+        .titulo-contato{
+            margin:0 auto;
+            display: block;
+        }
+
+        #interno-contato{
+            margin:30px auto;
+            display: block;
+            #form-contato{
+                input,textarea{
+                        border: solid 2px #000;
+                        border-radius:10px;
+                        color:#000;
+                        background-color: rgba(255, 255, 255, 0.34);
+                        padding:10px;
                     }
-                    z-index: 99;
+                form{
+                    display: inline-block;
+
                 }
-                .link-facebook{
-                    margin:10px 10px 0;
+                text-align: center;
+                p{
+                    text-align: left;
+                }
+            }
+            #socials-contato{
+                #facebook-feed{
+                    padding-left: 30px;
+                    .social-link {
+                    display: inline-block;
+
+                    }
+                    .social-link-image {
+                        img{
+                            border-radius:100px;
+                            width:100px;
+                            border: solid 5px #006738;
+                        }
+                        z-index: 99;
+                    }
+                    .link-facebook{
+                        margin:10px 10px 0;
+                    }
+                    
+            
+                    .social-link-text {
+                        border: solid 2px #000;
+                        border-radius:10px;
+                        color:#000;
+                        padding:20px;
+                        width: initial;
+                        margin:20px;
+                        background-color: rgba(255, 255, 255, 0.34);
+                        top: -50px;
+                        left: 36px; 
+                        max-width: 433px;
+                   
+                    }
+                    .owl-item:nth-child(2){
+                         .social-link-text {
+                            top: -57px;
+                            left: -47px;
+                        }
+                         .social-link img, .social-link {
+                           float:right;
+                         }                
+                    }
                 }
                 
-        
-                .social-link-text {
-                    border: solid 2px #000;
-                    border-radius:10px;
-                    color:#000;
-                    padding:20px;
-                    width: initial;
-                    margin:20px;
-                    background-color: rgba(255, 255, 255, 0.34);
-                    top: -50px;
-                    left: 36px; 
-                    max-width: 433px;
-               
-                }
-                .owl-item:nth-child(2){
-                     .social-link-text {
-                        top: -57px;
-                        left: -47px;
-                    }
-                     .social-link img, .social-link {
-                       float:right;
-                     }                
-                }
             }
-            
-        }
         
 
+        }
     }
-}
+    #linda{
+        .interno{
+            padding-bottom: 10px;
+        }
+        height: initial;
+        font-size: 20px;
+        padding:30px 45px;
+        a{
+            color: #89C9A4;
+
+        }
+        a:hover{
+            color: #CBCFD9;
+        }
+        .linda-post{
+            font-size:18px;
+            margin-top: 30px;
+            img{
+                margin-bottom: 20px;
+            }
+        }
+        #img-linda{
+            position: absolute;
+            right: 0;
+            top: -20vh;
+            z-index: 999;
+        }
+    }
+    #pianos{
+        background-size:contain; 
+        background-image: url('../images/fundo-piano.png');
+    }
+    
+}        
 .single-trilha{
     background-image: url('../images/single-trilha-background.png');
     background-repeat: no-repeat;
@@ -331,7 +412,7 @@
         h1{
             margin-bottom: 44px;
             text-align: center;
-            font-size: 54px;
+            font-size: 45px;
             text-transform: uppercase;
         }
         p{
@@ -351,7 +432,7 @@
     }
     .entry-content, .single-soundart-galeria{
         margin-bottom: 30px;
-        min-height: 100px;
+        min-height: 10px;
     }    
    .fundo{
         // background-color: rgba(127,127,127,0.5);
@@ -380,11 +461,30 @@
         img{
             max-width: 80%;
             margin: 0 auto;
-            border-radius: 20px;        
+            // border-radius: 20px;        
         }
 
     }
 }
+// ==========================================================================
+// 404
+// 404
+// 404
+// ==========================================================================
+
+body.error404{
+    .interno{
+        margin-top:20px;
+        min-height: 93vh;
+    }
+}
+// ==========================================================================
+// 404
+// 404
+// 404
+// ==========================================================================
+
+
 // ==========================================================================
 // Sidebar
 // ==========================================================================
@@ -746,6 +846,9 @@ NO MORE TABLES!! ;)
   -moz-animation: scaleUpTo .5s ease both;
   animation: scaleUpTo .5s ease both;
 }
+
+
+
 /* Keyframes */
 /*empty*/
 @-webkit-keyframes empty {

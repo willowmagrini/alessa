@@ -78,7 +78,8 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 		 */
 		register_nav_menus(
 			array(
-				'main-menu' => __( 'Main Menu', 'odin' )
+				'main-menu' => __( 'Main Menu', 'odin' ),
+				'menu-internas'  => __( 'Menu Internas', 'odin' ),
 			)
 		);
 
@@ -341,3 +342,6 @@ function add_class_attachment_link($html){
     return $html;
 }
 add_filter('wp_get_attachment_link','add_class_attachment_link',10,1);
+
+
+add_filter( 'show_admin_bar', '__return_false' );

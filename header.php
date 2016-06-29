@@ -48,9 +48,15 @@
 				</div>
 				<nav class="collapse navbar-collapse navbar-main-navigation" role="navigation">
 					<?php
+						if (is_front_page()) {
+							$menu='main-menu' ;
+						}
+						else{
+							$menu='menu-internas' ;
+						}
 						wp_nav_menu(
 							array(
-								'theme_location' => 'main-menu',
+								'theme_location' => $menu,
 								'depth'          => 2,
 								'container'      => false,
 								'menu_class'     => 'nav navbar-nav',
