@@ -70,13 +70,25 @@ get_header(); ?>
 
 		</section> 
 		<section class="secao-front" id="pianos">
-			<div class="col-sm-6"></div>
-			<div class="col-sm-6"></div>
+			<div class="interno">
+				<div class="col-sm-6"></div>
+				<div class="col-sm-6">
+					<h1>Alessa</h1>
+					<h2>a Cidade e</h2> 
+					<h2>os Pianos</h2>
+					<p class="texto-pianos">
+						A idéia do blog surgiu quando Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br><a href="">Conheça o blog</a>
+					</p>
+					<p class="ver-piano"><a href="">Veja o último post</a></p>
+
+				</div>
+				<div class="clearfix"></div>
+			</div>
 
 		</section> 
 		<section class="secao-front" id="agenda">
-			<div class="col-sm-6"></div>
-			<div class="col-sm-6"></div>
+			<?php get_template_part( 'content', 'agenda' ); ?>
+			<div class="clearfix"></div>
 
 		</section> 
 		<section class="secao-front" id="ritaleena">

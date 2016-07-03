@@ -18,6 +18,9 @@
 // ==========================================================================
 // Header
 // ==========================================================================
+body{
+    font-family: 'Roboto', sans-serif;
+}
 #header {
         position: fixed;
         width: 100%;
@@ -66,6 +69,9 @@
     }
 .home {
     #content {
+        .your-message textarea{
+            height: 135px;
+        }
         .post {
             margin-bottom: 40px;
             &.sticky {
@@ -90,7 +96,7 @@
         
     .secao-front{
         background-color: transparent;
-        height: 100vh;
+        min-height: 93vh;
         background-attachment:fixed;
         background-size: cover;
         background-position:center;
@@ -172,7 +178,7 @@
         top: 10vh;
     }
     #ritaleena{
-        height: auto;
+        // height: auto;
         border-top: 12px solid #EB1C22;
         border-bottom: 12px solid #EB1C22;
         canvas{
@@ -183,7 +189,7 @@
             position: relative;
             max-width: 600px;
             width: 25vw;
-            margin: 60px auto 30px;
+            margin: 18vh auto 0px;
             img{
                 width:100%;
             }   
@@ -209,14 +215,14 @@
         background-image: url('../images/fundo-contato.jpg');
         background-attachment: scroll;
         // top:-22vw;
-        padding-top: 95px;
+        padding-top: 20px;
         .titulo-contato{
             margin:0 auto;
             display: block;
         }
 
         #interno-contato{
-            margin:30px auto;
+            margin: 0px auto;
             display: block;
             #form-contato{
                 input,textarea{
@@ -307,14 +313,215 @@
         }
         #img-linda{
             position: absolute;
-            right: 0;
+            right: 20px;
             top: -20vh;
             z-index: 999;
+            width: 40vw;
+
         }
     }
     #pianos{
+        font-family: 'Roboto', sans-serif;
+        // background-position-y: 148px;
         background-size:contain; 
         background-image: url('../images/fundo-piano.png');
+        background-repeat: no-repeat;
+        background-attachment: initial;
+        h1{
+            font-size: 8vw;
+            font-weight: 300;
+            margin-right: 11vw;
+            text-transform: capitalize;
+        }
+        h2:first-of-type{
+            margin-right: 7vw;
+
+        }
+        h2{
+            font-size:4vw;
+
+            color: #C93C65;
+        }
+        h1,h2{
+            text-align: right;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        .texto-pianos{
+            font-family: 'Special Elite', cursive;
+            font-size: 24px;
+            margin-top: 73px;  
+            background: rgba(255, 255, 255, 0.54);
+   
+        }
+        a:hover, a:focus{
+            opacity: 0.8;
+            text-decoration: none;
+        }
+        .ver-piano{
+            font-size: 35px;
+            text-align: right;
+            margin-top: 52px;
+            a{
+                color: #C93C65;
+            }
+            
+        }    
+    }
+    #agenda{
+            background: #000;
+
+        div.neon {
+            padding: 40px 0 20px;
+            font-size: 75px;
+            font-family: 'Monoton', cursive;
+            text-align: center;
+            text-shadow: 0 0 80px white, 0 0 30px green, 0 0 6px blue;
+            color: white;
+        }
+        .esquerda{
+
+        }
+        #eventos-container{
+            .eventos-interno{
+                height: 307px;
+                margin: 35px 30px;
+                position: absolute;
+                width: 819px;
+                background: #fff;
+                .col-sm-6{
+                    height: 307px;
+                    border:solid black 2px;
+
+                }
+            }
+            .evento{
+                padding: 30px;
+                h2{
+                    margin-top:0;
+                }
+                .data-evento{
+                    width: auto;
+                    float: left;
+                    margin-right: 32px;
+                }
+                .titulo-evento{
+                    height: 125px;
+                    border-bottom:2px solid black; 
+                }
+                .conteudo-evento{
+                    .texto-evento{
+                       font-size: 16px;
+                        padding-top: 10px;
+                    }
+                }
+            }
+            width: 878px;
+            height: 380px;
+            position: relative;
+            margin:0 auto;
+            .borda{
+                position: absolute;
+                 &.esquerda{
+                    left:0;
+                 }
+                 &.direita{
+                    right:0
+                 }
+                 &.topo{
+                    top:-1px;
+                    left: 30px;
+                    .bola{
+                        display: inline-block;
+
+                    }
+                 }
+                 &.baixo{
+                    left: 30px;
+                    .bola{
+                        
+                        display: inline-block;
+                    }
+                    bottom:0;
+                 }
+
+
+
+                .bola:nth-child(2n){
+                    animation-duration: 0.3s;
+                    animation-name: pisca;
+                    animation-iteration-count: infinite;
+                    animation-delay:0.1s;
+                }
+                .bola:nth-child(2n+1){
+                    animation-duration: 0.3s;
+                    animation-name: pisca;
+                    animation-iteration-count: infinite;
+                }
+                .bola{
+                    
+
+                    margin:14px 7px; 
+                    box-shadow: 0 0 120px white, 0 0 80px green, 0 0 6px blue; 
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 10px;
+                    background: #fff;
+                  &.fundo, &.topo{
+                    display: inline-block;
+                  }
+                  &.esquerda{
+                    float:left; 
+                    display: block;
+                    clear: both;   
+                  } 
+                  &.direita{
+                    float:right;   
+                    display: block;
+                    clear: both; 
+                  }                   
+                }
+            } 
+        }
+           
+       
+        
+        .main:hover { 
+            text-shadow: 0 0 120px white, 0 0 80px green, 0 0 6px blue; 
+        }
+        #sub:hover { text-shadow: 0 0 120px orangered, 0 0 40px red, 0 0 8px DarkRed; }
+        .main span {
+            animation: upper 2s step-end infinite;
+        }
+        #sub {
+            text-shadow: 0 0 80px red, 0 0 30px FireBrick, 0 0 6px DarkRed;
+            color: red;
+        }
+        #sub span:nth-of-type(1) {
+            animation: lower 5s step-end infinite;
+        }
+        #sub span:nth-of-type(2) {
+            text-shadow: none;
+            opacity:0.4;
+        }
+        @keyframes upper {
+            0%, 22%, 64%, 70%, 100% {
+                opacity:1;
+                text-shadow: 0 0 80px white, 0 0 30px green, 0 0 6px blue;
+            }
+            20%, 63%, 65% {
+                opacity:0.4;
+                text-shadow: none; 
+            }
+        }
+        @keyframes lower {
+            0%, 12%, 23%, 37%, 46%, 51%, 61%, 71%, 96%, 100% {
+                opacity:1; text-shadow: 0 0 80px red,0 0 30px FireBrick,0 0 6px DarkRed;
+            }
+            19%, 32%, 45%, 50%, 59%, 69%, 86% { 
+                opacity:0.4; text-shadow: none; 
+            }
+        }
     }
     
 }        
@@ -951,4 +1158,13 @@ NO MORE TABLES!! ;)
 }
 @keyframes scaleUpTo {
   to { opacity: 0; transform: scale(1.5); }
+}
+@keyframes pisca {
+  from {
+   opacity:1;
+  }
+
+  to {
+    opacity: 0.6;
+  }
 }
