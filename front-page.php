@@ -37,7 +37,7 @@ get_header(); ?>
 		</section> -->
 		<section class="secao-front" id="linda">
 			<div class="interno">
-				<div class="col-sm-6">
+				<div class="col-sm-8">
 					<div id="intro-linda">
 						<?php
 							$linda=get_page_by_title( 'linda');
@@ -62,7 +62,7 @@ get_header(); ?>
 				</div>
 				<img  id="img-linda" src="<?php echo get_template_directory_uri()."/assets/images/linda-barras.png"; ?>" alt="">
 
-				<div class="col-sm-6">
+				<div class="col-sm-4">
 				</div>	
 				<div class="clearfix"></div>
 			</div>
@@ -76,10 +76,18 @@ get_header(); ?>
 					<h1>Alessa</h1>
 					<h2>a Cidade e</h2> 
 					<h2>os Pianos</h2>
-					<p class="texto-pianos">
-						A idéia do blog surgiu quando Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br><a href="">Conheça o blog</a>
-					</p>
-					<p class="ver-piano"><a href="">Veja o último post</a></p>
+					<div class="texto-pianos">
+						<?php 
+							$pianos=get_page_by_title( 'Pianos');
+							// print_r($pianos);
+							$pianos_conteudo=$pianos->post_content ;
+
+  							$content = apply_filters('the_content', $pianos_conteudo );
+  							echo $content;
+
+						 ?>
+					</div>
+					<p class="ver-piano"><a href="">Venha ver o blog</a></p>
 
 				</div>
 				<div class="clearfix"></div>
@@ -97,10 +105,16 @@ get_header(); ?>
 			<div class="img-release">
 				<img src="<?php echo get_template_directory_uri()."/assets/images/ritaleena.jpg"; ?>" alt="">
 				<h4 class="fotos-release-texto"><a href="#" id="ritafotos"><?php echo __('Fotos', 'odin') ?></a></h4>
-				<h4 class="fotos-release-texto"><a href="#" id="ritalease"><?php  echo __('Release', 'odin') ?></a></h4>
+				<h4 class="fotos-release-texto"><a id='release-link' href="#release" id="ritalease"><?php  echo __('Release', 'odin') ?></a></h4>
 			</div>
 							
-
+		<div id="release">
+			<?php $ritaleena=get_page_by_title( 'ritaleena'); 
+				$conteudo= $ritaleena->post_content;
+				$conteudo = apply_filters('the_content', $conteudo);
+  				echo $conteudo;
+			?>
+		</div>
 		</section>
 		<section class="secao-front" id="contato">
 			<img class="titulo-contato" src="<?php echo get_template_directory_uri()."/assets/images/titulo-contato.png"; ?>" alt="">

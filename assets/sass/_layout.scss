@@ -96,7 +96,7 @@ body{
         
     .secao-front{
         background-color: transparent;
-        min-height: 93vh;
+        min-height: calc(100vh - 51px);
         background-attachment:fixed;
         background-size: cover;
         background-position:center;
@@ -183,6 +183,13 @@ body{
         border-bottom: 12px solid #EB1C22;
         canvas{
             position: absolute;
+        }
+        #release{
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 21px;
+            padding: 50px 0;
         }
         .img-release{
             text-align: center;
@@ -348,10 +355,12 @@ body{
             margin-top: 0;
         }
         .texto-pianos{
+            margin-top:20px;     
+            p{
             font-family: 'Special Elite', cursive;
             font-size: 24px;
-            margin-top: 73px;  
             background: rgba(255, 255, 255, 0.54);
+            } 
    
         }
         a:hover, a:focus{
@@ -373,6 +382,7 @@ body{
 
         div.neon {
             padding: 40px 0 20px;
+            text-transform: uppercase;
             font-size: 75px;
             font-family: 'Monoton', cursive;
             text-align: center;
@@ -406,7 +416,10 @@ body{
                     margin-right: 32px;
                 }
                 .titulo-evento{
-                    height: 125px;
+                    h2{
+                        font-size: 25px;
+                    }
+                    min-height: 69px;
                     border-bottom:2px solid black; 
                 }
                 .conteudo-evento{
@@ -448,13 +461,13 @@ body{
 
 
                 .bola:nth-child(2n){
-                    animation-duration: 0.3s;
+                    animation-duration: 0.5s;
                     animation-name: pisca;
                     animation-iteration-count: infinite;
                     animation-delay:0.1s;
                 }
                 .bola:nth-child(2n+1){
-                    animation-duration: 0.3s;
+                    animation-duration: 0.5s;
                     animation-name: pisca;
                     animation-iteration-count: infinite;
                 }
@@ -491,14 +504,14 @@ body{
         }
         #sub:hover { text-shadow: 0 0 120px orangered, 0 0 40px red, 0 0 8px DarkRed; }
         .main span {
-            animation: upper 2s step-end infinite;
+            animation: upper 1s step-end infinite;
         }
         #sub {
             text-shadow: 0 0 80px red, 0 0 30px FireBrick, 0 0 6px DarkRed;
             color: red;
         }
         #sub span:nth-of-type(1) {
-            animation: lower 5s step-end infinite;
+            animation: lower 4s step-end infinite;
         }
         #sub span:nth-of-type(2) {
             text-shadow: none;
@@ -525,85 +538,99 @@ body{
     }
     
 }        
-.single-trilha{
-    background-image: url('../images/single-trilha-background.png');
+.single-trilha, .single-soundart{
+    background-image: url('../images/fundo-single-trilhas.png');
     background-repeat: no-repeat;
     background-size: cover;
 
     #wrapper{
-        background-color: rgba(220, 157, 157, 0.14);
+        background-color: rgba(4, 134, 55, 0.2);
     }
     h1{
         color: #000;
         text-align: center;
-        
-        color: #9B5889;
+        background-color: rgba(4, 134, 55, 0.3);
+        color: #000;
 
 
      }
     p{
         color: #000;
     }
-    .anterior-single{
-        span{
-           background-image:url('../images/voltar.png')
+    .paginacao-single{
+        a{
+            color:#DEDDA0;
+            text-shadow: 0 0 10px #fff,0 0 1px #fff,0 0 30px #fff,0 0 40px #DEDDA0,0 0 70px #DEDDA0,0 0 80px #DEDDA0,0 0 100px #DEDDA0;
 
         }
-    }
-    .proximo-single{
-        span{
-           background-image:url('../images/play.png')
+        .anterior-single{
+            span{
+               background-image:url('../images/esquerda.png');
+               background-repeat: no-repeat;
+               background-position:center left;
+               background-size: contain;
 
+
+            }
+        }
+        .proximo-single{
+            span{
+               background-image:url('../images/direita.png');
+               background-repeat: no-repeat;
+               background-position:center right;
+               background-size: contain;
+            }
         }
     }
+    
     a{
         color: #9B5889;
         
     }
     .owl-item {
         img{
-            border: solid 3px #9B5889;
         }
     }
  }
- .single-soundart{
-    
-    #wrapper{
-    background-color: rgba(216, 198, 198, 0.32);
-    }
-    background-image: url('../images/single-soundart-background.png');
-     h1{
-        color: #1EA297;
-        }
-    p{
-        color: #000;
-      }
-    a{
-          color: #1EA297;
-      }
-    .owl-item {
-        img{
-            border: solid 3px #1EA297;
-        }
+ // .single-soundart{
+ //    background-image: url('../images/fundo-single-soundart.png');
+ //    background-repeat: no-repeat;
+ //    background-size: cover;
+
+ //    #wrapper{
+ //    background-color: rgba(216, 198, 198, 0.32);
+ //    }
+ //     h1{
+ //        color: #1EA297;
+ //        }
+ //    p{
+ //        color: #000;
+ //      }
+ //    a{
+ //          color: #1EA297;
+ //      }
+ //    .owl-item {
+ //        img{
+ //            border: solid 3px #1EA297;
+ //        }
         
-    }
-    .anterior-single{
-        span{
-           background-image:url('../images/ant-soundart.png')
+ //    }
+ //    .anterior-single{
+ //        span{
+ //           background-image:url('../images/ant-soundart.png')
 
-        }
-    }
-    .proximo-single{
-        span{
-           background-image:url('../images/prox-soundart.png')
+ //        }
+ //    }
+ //    .proximo-single{
+ //        span{
+ //           background-image:url('../images/prox-soundart.png')
 
-        }
-    }
+ //        }
+ //    }
     
- }
+ // }
 .single-soundart, .single-trilha{
     .paginacao-single{
-        margin-top:50px;
         font-size: 17px;
         .anterior-single{
             float:left;
@@ -614,32 +641,42 @@ body{
     }
     
     .row{
-        padding-top:30px;
+        padding-top:0;
        
         h1{
-            margin-bottom: 44px;
-            text-align: center;
-            font-size: 45px;
-            text-transform: uppercase;
+           margin-bottom: 44px;
+           text-align: right;
+           max-width: 800px;
+           margin-top: -2px;
+           font-size: 28px;
+           padding:10px;
+           text-transform: uppercase;
         }
         p{
             font-size:20px;
         }
-        a {
-            span{
-            width: 32px;
-            display: inline-block;
-            height: 32px;
-            margin:10px;
-            vertical-align: middle;
+        .paginacao-single{
+            a {
+                span{
+                width: 32px;
+                display: inline-block;
+                height: 32px;
+                margin:10px;
+                vertical-align: middle;
 
-            }
+                }
+            }    
         }
 
     }
     .entry-content, .single-soundart-galeria{
-        margin-bottom: 30px;
+        max-width: 900px;
+        float: none;
+        margin: 0 auto 30px;
         min-height: 10px;
+    }
+    .single-soundart-galeria{
+        padding-bottom:60px;
     }    
    .fundo{
         // background-color: rgba(127,127,127,0.5);
@@ -651,8 +688,31 @@ body{
     }
 } 
 .single{
+
+    iframe{
+        margin: 0 auto;
+        display: block;
+    }
+    .faixa-preta{
+        width: 100%;
+        height: 52px;
+        background-color:#000;
+        position:absolute;
+        bottom:0;
+    }
+    .entry-content{
+        max-width: 1200px;
+        margin: 0 auto;
+        display: block;
+        float: none;
+    }
+    .owl-wrapper{
+        margin: 0 auto;
+    }
     .interno{
-        max-width: 800px;
+        max-width: 100%;
+         min-height: calc(100vh - 130px);
+
     }
 
     #wrapper{
@@ -766,6 +826,10 @@ body {
 /* Owl Carousel Bootstrap Custom CSS */
 
 /* Header Navigation */
+#header .navbar-main-navigation{
+    max-width: 1200px;
+    margin:0 auto;
+}
 #top-nav{
     border-bottom: 1px solid #e1e6dd;
     background: #FFF;

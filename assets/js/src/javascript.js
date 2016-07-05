@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
 	});
 	
 	$('#owlsingle').owlCarousel({
-	    items : 3,
+	    items : 5,
 	    itemsDesktop : [1000,2], //5 items between 1000px and 901px
 	    itemsDesktopSmall : [900,2], // betweem 900px and 601px
 	    autoPlay : true,
@@ -46,5 +46,11 @@ jQuery(document).ready(function($) {
 		});	
 
 	});
+	$("#release-link").click(function(e){
+		e.preventDefault();
+		$("#release").fadeIn();
+
+	});
+	
 
 });

@@ -29,24 +29,39 @@
 						'exclude'     => get_post_thumbnail_id()
 						) );
 
-					if ( $attachments ) {
-						echo '<div id="owlsingle">';
-						foreach ( $attachments as $attachment ) {
-							$class = "post-attachment mime-" . sanitize_title( $attachment->post_mime_type );
-							$thumbimg = wp_get_attachment_image( $attachment->ID, 'single-galeria' );
-							wp_get_attachment_link( $attachment->ID, 'single-galeria', true );
-							echo '<div class="' . $class . ' data-design-thumbnail">' . $thumbimg . '</div>';
-						}
-						echo "</div>";
-			
+					$gallery = get_post_gallery_images( $post->ID );
+					echo '<div id="owlsingle">';
+
+					foreach( $gallery as $image_url ) {
+
+						echo '<div class="' . $class . ' data-design-thumbnail"><img src="' . $image_url . '"></div>';
+
 					}
+					echo "</div>";
+
+
+					// if ( $attachments ) {
+					// 	echo '<div id="owlsingle">';
+					// 	foreach ( $attachments as $attachment ) {
+					// 		$class = "post-attachment mime-" . sanitize_title( $attachment->post_mime_type );
+					// 		$thumbimg = wp_get_attachment_image( $attachment->ID, 'single-galeria' );
+					// 		wp_get_attachment_link( $attachment->ID, 'single-galeria', true );
+					// 		echo '<div class="' . $class . ' data-design-thumbnail">' . $thumbimg . '</div>';
+					// 	}
+					// 	echo "</div>";
+			
+					// }
 				}
 				 ?>
-				 <div class="paginacao-single">
-				 	<?php 
-					previous_post_link( '<strong class="anterior-single"> %link</strong>', ' <span></span>%title' );
-					next_post_link( '<strong class="proximo-single"> %link</strong>', '%title <span></span>' );?>
-				 </div>	
+				
+		</div>
+		<div class="faixa-preta">
+			 <div class="paginacao-single">
+			 	<?php 
+				previous_post_link( '<strong class="anterior-single"> %link</strong>', ' <span></span>%title' );
+				next_post_link( '<strong class="proximo-single"> %link</strong>', '%title <span></span>' );?>
+			 </div>	
 		</div>
 	</div>
 </article><!-- #post-## -->
+
