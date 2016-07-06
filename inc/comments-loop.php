@@ -32,12 +32,10 @@ if ( ! function_exists( 'odin_comment_loop' ) ) {
 							<footer class="comment-meta">
 								<h5 class="media-heading">
 									<?php echo sprintf( '<strong><span class="fn">%1$s</span></strong>
-														 %2$s <a href="%3$s"><time datetime="%4$s">%5$s %6$s </time></a>
-														 <span class="says"> %7$s</span>',
+														 %2$s 
+														 <span class="says"> %3$s</span>',
 														 get_comment_author_link(), __( 'in', 'odin' ),
-														 esc_url( get_comment_link( $comment->comment_ID ) ),
-														 get_comment_time( 'c' ),
-														 get_comment_date(), __( 'at', 'odin' ),
+														get_comment_date(), __( 'at', 'odin' ),														 
 														 get_comment_time(), __( 'said:', 'odin' ) ); ?>
 								</h5>
 

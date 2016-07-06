@@ -34,7 +34,7 @@
 
 					foreach( $gallery as $image_url ) {
 
-						echo '<div class="' . $class . ' data-design-thumbnail"><img src="' . $image_url . '"></div>';
+						echo '<div  data-design-thumbnail"><img src="' . $image_url . '"></div>';
 
 					}
 					echo "</div>";

@@ -339,6 +339,7 @@ if ( is_woocommerce_activated() ) {
 	require get_template_directory() . '/inc/woocommerce/template-tags.php';
 }
 add_image_size('single-galeria', 300, 400, 1 );
+add_image_size('blog', 400);
 function add_class_attachment_link($html){
     $postid = get_the_ID();
     $html = str_replace('<a','<a class="cboxElement"',$html);
@@ -348,3 +349,17 @@ add_filter('wp_get_attachment_link','add_class_attachment_link',10,1);
 
 
 add_filter( 'show_admin_bar', '__return_false' );
+
+
+function get_first_image() {
+	global $post, $posts;
+	$first_img = '';
+	ob_start();
+	ob_end_clean();
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+	$first_img = $matches [1] [0];
+	if(empty($first_img)){ //Defines a default image
+		$first_img = "/images/default.jpg";
+	}
+	return $first_img;
+}
