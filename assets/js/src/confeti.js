@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
       confettiRibbonCount = 11,
       ribbonPaperCount = 30,
       ribbonPaperDist = 12.0,
-      ribbonPaperThick = 2.0,
+      ribbonPaperThick = 3.0,
       confettiPaperCount = 50,
       DEG_TO_RAD = PI / 180,
       RAD_TO_DEG = 180 / PI,

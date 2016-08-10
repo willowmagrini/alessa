@@ -258,7 +258,7 @@ function odin_enqueue_scripts() {
 
 
 		$options = get_option('social');
-		wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300|Warnes|Monoton|Special+Elite|Roboto:200,300,400', array(), null, 'all' );
+		wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300|Warnes|Monoton|Special+Elite|Alegreya+Sans:200,300,400', array(), null, 'all' );
 		wp_enqueue_script( 'odin-main-min', $template_url . '/assets/js/main.min.js', array(), null, true );
 		wp_localize_script( 'odin-main-min', 'odin_main', array('ajaxurl' => admin_url( 'admin-ajax.php' ), 'twitter_widget_id' => $options['twitter_widget_id'] ) );
 
@@ -339,7 +339,7 @@ if ( is_woocommerce_activated() ) {
 	require get_template_directory() . '/inc/woocommerce/template-tags.php';
 }
 add_image_size('single-galeria', 300, 400, 1 );
-add_image_size('blog', 400);
+add_image_size('blog', 400, 400);
 function add_class_attachment_link($html){
     $postid = get_the_ID();
     $html = str_replace('<a','<a class="cboxElement"',$html);

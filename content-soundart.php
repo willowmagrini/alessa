@@ -30,27 +30,33 @@
 						) );
 
 					$gallery = get_post_gallery_images( $post->ID );
-					echo '<div id="owlsingle">';
+					// echo "<pre>";
+					// print_r($attachments);
+					// echo "</pre>";
 
-					foreach( $gallery as $image_url ) {
+					
+					if ( $attachments ) {
+						echo '<div id="owlsingle">';
+						foreach ( $attachments as $attachment ) {
+							$class = "post-attachment mime-" . sanitize_title( $attachment->post_mime_type );
+							$thumbimg = wp_get_attachment_image( $attachment->ID, 'single-galeria' );
+							echo '<div class="' . $class . ' data-design-thumbnail"><a target="_blank" href="'.wp_get_attachment_url( $attachment->ID ).'">' . $thumbimg . '</a></div>';
+							 
 
-						echo '<div  data-design-thumbnail"><img src="' . $image_url . '"></div>';
-
-					}
-					echo "</div>";
-
-
-					// if ( $attachments ) {
-					// 	echo '<div id="owlsingle">';
-					// 	foreach ( $attachments as $attachment ) {
-					// 		$class = "post-attachment mime-" . sanitize_title( $attachment->post_mime_type );
-					// 		$thumbimg = wp_get_attachment_image( $attachment->ID, 'single-galeria' );
-					// 		wp_get_attachment_link( $attachment->ID, 'single-galeria', true );
-					// 		echo '<div class="' . $class . ' data-design-thumbnail">' . $thumbimg . '</div>';
-					// 	}
-					// 	echo "</div>";
+						}
+						echo "</div>";
 			
+					}
+					// echo '<div id="owlsingle">';
+					// foreach( $gallery as $image_url ) {
+
+					// 	echo '<div  data-design-thumbnail"><a target="_blank" href="'.$image_url.'"><img src="' . $image_url . '"></a></div>';
+
 					// }
+					// echo "</div>";
+
+
+					
 				}
 				 ?>
 				

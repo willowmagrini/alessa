@@ -87,7 +87,7 @@ get_header(); ?>
 
 						 ?>
 					</div>
-					<p class="ver-piano"><a href="">Venha ver o blog</a></p>
+					<p class="ver-piano"><a href="blog">Venha ver o blog</a></p>
 
 				</div>
 				<div class="clearfix"></div>

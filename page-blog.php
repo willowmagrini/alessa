@@ -28,19 +28,35 @@ get_header(); ?>
 			            	
 			            	echo '<div class="masonry-container">';
 			                while ( $wp_query->have_posts() ) : $wp_query->the_post(); 
-								// echo'<pre>';
-			     //            	print_r($post);     	   
-			     //            	echo '</pre>';
-			                    // print_r(get_attached_media('image',$post ));
-			                    echo get_the_post_thumbnail($post).'
+								$args = array(
+								'order'          => 'ASC',
+								'orderby'        => 'menu_order',
+								'post_type'      => 'attachment',
+								'post_parent'    => $post->ID,
+								'post_mime_type' => 'image',
+								'post_status'    => null,
+								'numberposts'    => -1,
+								);
+								$attachments = get_posts($args);
+								if ($attachments) {
 
+									$img=wp_get_attachment_image(($attachments[0]->ID),'blog');
+								 //    foreach ($attachments as $attachment) {
+
+								 //    $img= wp_get_attachment_image($attachment->ID, 'blog');
+								 //    break;
+									// }
+								} 
+								// echo'<pre>';
+			     // //            	print_r($post);   
+   			  //                   print_r(get_attached_media('image',$post )->ID);
+			     //            	echo '</pre>';
+			                    echo get_the_post_thumbnail($post).'
+							
 			                    	<div class="item">
 									   	<div class="well"> 
-										<a href="'.get_permalink($post->ID ).'">
-											<img class="masonry-img" src="'.
-											
-											get_first_image() .'">
-										</a>	
+										<a href="'.get_permalink($post->ID ).'"><img class="attachment-blog" src="'.get_first_image().'">';
+										echo'</a>	
 									   	</div>
 									   	<div class="titulo-post">
 											<a href="'.get_permalink($post->ID ).'">
