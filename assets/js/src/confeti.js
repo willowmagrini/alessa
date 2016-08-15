@@ -44,13 +44,13 @@ var retina = window.devicePixelRatio,
 }(window));
 
 document.addEventListener("DOMContentLoaded", function() {
-  var speed = 50,
+  var speed = 70,
       duration = (1.0 / speed),
       confettiRibbonCount = 11,
       ribbonPaperCount = 30,
       ribbonPaperDist = 12.0,
       ribbonPaperThick = 3.0,
-      confettiPaperCount = 50,
+      confettiPaperCount = 60,
       DEG_TO_RAD = PI / 180,
       RAD_TO_DEG = 180 / PI,
       colors = [

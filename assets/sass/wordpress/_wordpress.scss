@@ -97,11 +97,11 @@
                 float: none;
             }
             @if 6 <= $gallery {
-                margin: 2em 1%;
+                margin: 0  1% 2em;
                 width: unquote(100 / $gallery - 2 + "%");
             }
             @else {
-                margin: 2em 2%;
+                margin: 0 2% 2em;
                 width: unquote(100 / $gallery - 4 + "%");
             }
         }

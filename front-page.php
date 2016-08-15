@@ -69,6 +69,23 @@ get_header(); ?>
 			
 
 		</section> 
+		<section class="secao-front" id="ritaleena">
+			<canvas  id='confetti' >
+			</canvas>
+			<div class="img-release">
+				<img src="<?php echo get_template_directory_uri()."/assets/images/ritaleena.jpg"; ?>" alt="">
+				<h4 class="fotos-release-texto"><a href="#" id="ritafotos"><?php echo __('Fotos', 'odin') ?></a></h4>
+				<h4 class="fotos-release-texto"><a id='release-link' href="#release" id="ritalease"><?php  echo __('Release', 'odin') ?></a></h4>
+			</div>
+							
+		<div id="release">
+			<?php $ritaleena=get_page_by_title( 'ritaleena'); 
+				$conteudo= $ritaleena->post_content;
+				$conteudo = apply_filters('the_content', $conteudo);
+  				echo $conteudo;
+			?>
+		</div>
+		</section>
 		<section class="secao-front" id="pianos">
 			<div class="interno">
 				<div class="col-sm-6"></div>
@@ -99,23 +116,7 @@ get_header(); ?>
 			<div class="clearfix"></div>
 
 		</section> 
-		<section class="secao-front" id="ritaleena">
-			<canvas  id='confetti' >
-			</canvas>
-			<div class="img-release">
-				<img src="<?php echo get_template_directory_uri()."/assets/images/ritaleena.jpg"; ?>" alt="">
-				<h4 class="fotos-release-texto"><a href="#" id="ritafotos"><?php echo __('Fotos', 'odin') ?></a></h4>
-				<h4 class="fotos-release-texto"><a id='release-link' href="#release" id="ritalease"><?php  echo __('Release', 'odin') ?></a></h4>
-			</div>
-							
-		<div id="release">
-			<?php $ritaleena=get_page_by_title( 'ritaleena'); 
-				$conteudo= $ritaleena->post_content;
-				$conteudo = apply_filters('the_content', $conteudo);
-  				echo $conteudo;
-			?>
-		</div>
-		</section>
+		
 		<section class="secao-front" id="contato">
 			<img class="titulo-contato" src="<?php echo get_template_directory_uri()."/assets/images/titulo-contato.png"; ?>" alt="">
 			<article id="interno-contato" class="row">
