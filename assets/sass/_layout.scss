@@ -22,7 +22,21 @@
 // masonry
 // *, *:before, *:after {box-sizing:  border-box !important;}
 
-
+.googlemaps {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+ 
+.googlemaps iframe,
+.googlemaps object,
+.googlemaps embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 .masonry-container {
  -moz-column-width: 18em;
  -webkit-column-width: 18em;
@@ -125,9 +139,9 @@ body{
         max-width:1200px;
         margin:0 auto;
         margin: 0 auto;
-        padding-bottom: 100px;
+        padding-bottom: 145px;
         padding-right: 65px;
-        padding-top: 30px;
+        padding-top: 10px;
     }
         
     .secao-front{
@@ -207,7 +221,9 @@ body{
         text-align: right;
         height: initial;
         min-height: 110vh;
-
+        img{
+            max-width: 350px;
+        }
         h2{
             font-size:45px;
         }
@@ -217,9 +233,58 @@ body{
 
 
     }
+    .interno{
+        min-height: 450px;
+        #slider-trabalhos{
+            max-width: 400px;
+            float: right;
+            .owl-page{
+                span{
+                        height: 10px;
+                        width: 10px;
+                        background: #C2C0C0;
+                        content: "";
+                        margin: 0 5px;
+                        text-align: right;
+                        float: right;
+                        display: block;
+                        border-radius: 1000px;
+                }
+            }
+            .owl-page.active{
+                span{
+                    background: #000;
+
+                }
+            }
+        }
+    }
+    #link-ancora{
+        display: none;
+    }
+    #loader-trabalhos{
+        position: absolute;
+        display: none;
+        right: 200px;
+        bottom: 160px;
+        background-color: rgba(0, 0, 0, 0.48);
+        text-align: center;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99999;
+        width: 100vw;
+        img{
+            position: absolute;
+            top: 50vh;
+            left: 50vw;
+        }
+    }
+
     #ancora{
         position: absolute;
-        top: 10vh;
+        bottom: 95vh;
     }
     #ritaleena{
         // height: auto;
@@ -505,21 +570,19 @@ body{
 
 
                 .bola:nth-child(2n){
-                    animation-duration: 0.3s;
+                    animation-duration: 0.6s;
                     animation-name: pisca;
                     animation-iteration-count: infinite;
-                    animation-delay:0.1s;
                 }
                 .bola:nth-child(2n+1){
-                    animation-duration: 0.3s;
+                    animation-duration: 0.8s;
                     animation-name: pisca;
                     animation-iteration-count: infinite;
                 }
                 .bola{
-                    
-
                     margin:14px 7px; 
-                    box-shadow: 0 0 120px white, 0 0 80px green, 0 0 6px blue; 
+                    border-color:#fff; 
+                    // box-shadow: 0 0 120px white, 0 0 80px green, 0 0 6px blue; 
                     width: 10px;
                     height: 10px;
                     border-radius: 10px;
@@ -808,6 +871,11 @@ body{
     }
 }
 .single, .page-template-page-blog{
+    #comments{
+        .media-left{
+            display: none;
+        }
+    }
     h1.entry-title{
         margin-bottom: 44px;
         text-align: right;
@@ -827,7 +895,7 @@ body{
         width: 100%;
         height: 52px;
         background-color:#000;
-        position:absolute;
+        position:relative;
         bottom:0;
     }
     .entry-content{
@@ -852,6 +920,7 @@ body{
         margin-top:50px;
         min-height: 100vh;
         min-height: calc(100vh - 102px);
+        background-color: rgba(255,255,255,0.58);
 
     }
     .gss-info{
@@ -1364,10 +1433,11 @@ NO MORE TABLES!! ;)
 }
 @keyframes pisca {
   from {
-   opacity:1;
+    background-color:yellow;
   }
 
   to {
-    opacity: 0.6;
+    background-color:black;
+    
   }
 }

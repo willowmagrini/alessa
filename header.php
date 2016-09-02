@@ -23,7 +23,25 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body 
+	<?php 
+		$pianos=get_page_by_title( 'Pianos');
+
+		// $pianos=get_page( '24');
+
+	// echo get_field('repetir_imagem',$pianos->ID);
+	$fundo = get_field('fundo',$pianos->ID);
+	$estilo='background-image:url('.$fundo.');';
+	if (get_field('repetir_imagem',$pianos->ID) != 1) {
+		$estilo .= ";background-repeat:no-repeat;background-size:cover;background-attachment: fixed;";
+	}
+	// print_r($fundo);
+	if ( is_page_template('page-blog.php') OR is_singular('post' ) ) {
+		echo 'style="'.$estilo.'"';
+	}
+	body_class(); 
+	?>
+	>
 	<a id="skippy" class="sr-only sr-only-focusable" href="#content">
 		<div class="container">
 			<span class="skiplink-text"><?php _e( 'Skip to content', 'odin' ); ?></span>

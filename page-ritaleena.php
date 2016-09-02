@@ -2,7 +2,6 @@
 /**
  * Template Name: Ritaleena
  *
- * The template for displaying pages with sidebar.
  *
  * @package Odin
  * @since 2.2.0
@@ -21,16 +20,7 @@ get_header(); ?>
 							while ( have_posts() ) : the_post();
            	
 		
-								function catch_that_image() {
-  global $post, $posts;
-  $first_img = '';
-  ob_start();
-  ob_end_clean();
-  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-print_r($output);
-  return $output;
-}
-echo catch_that_image();
+								the_content( );
 			                 endwhile; 
 			                wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly
 

@@ -14,11 +14,16 @@
 		<div class="entry-content col-md-12		">
 			<?php
 			$content = get_the_content();
+			$fields = get_fields(get_the_id()); 
+			print_r($fields);
 			// $content = preg_replace('/\[gallery ids=[^\]]+\]/', '',  $content );	
 			$content = apply_filters('the_content', $content );
 			echo $content;
-				
+				$fonts= get_field( 'fonte_do_titulo','option' );
+						echo $fonts['font'];
 			?>
+			<div class="clearfix"></div>
+
 		</div><!-- .entry-content -->
 		
 		<div class="faixa-preta">

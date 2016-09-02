@@ -11,14 +11,14 @@ get_header(); ?>
 		<section class="secao-front" id="sound-trilha">
 			<article class="trabalho" id="soundart">
 				<img src="<?php echo get_template_directory_uri()."/assets/images/fundo-soundart.png"; ?>" alt="">
-				<a data-post-type="soundart" href="#ancora">
+				<a data-post-type="soundart" href="#">
 					<img src="<?php echo get_template_directory_uri()."/assets/images/link-soundart.png"; ?>" alt="">
 				</a>
 			</article>
 
 			<article class="trabalho" id="trilhas">
 				<img src="<?php echo get_template_directory_uri()."/assets/images/fundo-trilhas.png"; ?>" alt="">
-				<a data-post-type="trilha" href="#ancora">
+				<a data-post-type="trilha" href="#">
 					<?php echo '<img src="'.get_template_directory_uri().'/assets/images/link-trilhas-' .  get_locale(  ) . '.png">'; ?>
 
 					<!-- <img src="<?php echo get_template_directory_uri()."/assets/images/link-trilhas.png"; ?>" alt=""> -->
@@ -27,10 +27,11 @@ get_header(); ?>
 			</article>
 		</section>
 		<section class=" secao-front "id="conteudo-trabalhos">
+			<a href="#ancora" id="link-ancora"></a>
 			<div id="ancora"></div>
+			
 			<div class="interno">
-<!-- 				<img src="<?php echo get_template_directory_uri()."/assets/images/ajax-loading.gif"; ?>" alt="">
- -->			</div>
+			</div>
 		</section>
 		<!-- <section class="secao-front" id="transicao">
 			
@@ -135,7 +136,9 @@ get_header(); ?>
 
 		</section>	
 			
-		
+<div id="loader-trabalhos">
+				<img  src="<?php echo get_template_directory_uri()."/assets/images/ajax-loading.gif"; ?>" alt="">
+			</div>		
 	</main><!-- #main -->
 
 <?php

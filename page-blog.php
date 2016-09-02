@@ -15,9 +15,11 @@ get_header(); ?>
 								
 				<article >
 					<div class="interno">
-					<header class="entry-header"><h1 class="entry-title">Alessa a cidade e os pianos</h1></header><!-- .entry-header -->'
+					<header class="entry-header"><h1 class="entry-title"><?php echo __('Alessa a cidade e os pianos') ?></h1></header><!-- .entry-header -->'
 						<div class="entry-content col-md-12">
+
 						<?php
+
 							$wp_query = new WP_Query(array( 
 			                'post_type'         => 'post',
 			                'posts_per_page'    => 10,
@@ -40,7 +42,7 @@ get_header(); ?>
 								$attachments = get_posts($args);
 								if ($attachments) {
 
-									$img=wp_get_attachment_image(($attachments[0]->ID),'blog');
+									$img=wp_get_attachment_image(($attachments[0]->ID),'medium');
 								 //    foreach ($attachments as $attachment) {
 
 								 //    $img= wp_get_attachment_image($attachment->ID, 'blog');
@@ -51,12 +53,16 @@ get_header(); ?>
 			     // //            	print_r($post);   
    			  //                   print_r(get_attached_media('image',$post )->ID);
 			     //            	echo '</pre>';
-			                    echo get_the_post_thumbnail($post).'
+			                    echo '
 							
 			                    	<div class="item">
 									   	<div class="well"> 
-										<a href="'.get_permalink($post->ID ).'"><img class="attachment-blog" src="'.get_first_image().'">';
-										echo'</a>	
+										<a href="'.get_permalink($post->ID ).'">';
+
+											// the_post_thumbnail( $post->ID);         // Medium resolution
+										echo get_the_post_thumbnail( $post->ID, 'blog');
+
+										echo '</a>	
 									   	</div>
 									   	<div class="titulo-post">
 											<a href="'.get_permalink($post->ID ).'">
@@ -74,7 +80,7 @@ get_header(); ?>
 			            else{
 			                echo __('Não existem posts.', "odin");
 			            }
-			            
+			            echo do_shortcode('[googlemaps https://maps.google.com/maps/ms?msa=0&msid=215386675363289333682.0004ba72ca008e2cd80c6&hl=en&ie=UTF8&ll=-23.53979,-46.673041&spn=0.024118,0.080138&t=m&iwloc=0004c7c77f9b972086896&output=embed]' );
 						?>
 						</div> <!-- class="entry-content col-md-12"> -->
 					</div><!--interno  -->

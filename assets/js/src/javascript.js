@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
 	});
 	});
 	
-	$('.gallery').owlCarousel({
+	$('.single-soundart .gallery').owlCarousel({
 	    items : 1,
 	    itemsDesktop : [1000,1], //5 items between 1000px and 901px
 	    itemsDesktopSmall : [900,1], // betweem 900px and 601px
@@ -25,11 +25,11 @@ jQuery(document).ready(function($) {
 	    pagination:false,
 	});
 
-
 	// pega os trabalhos
 	$(".trabalho a").click(function(e){
-		// e.preventDefault();
+		e.preventDefault();
 		$('#conteudo-trabalhos .interno').fadeOut();
+		$('#loader-trabalhos').fadeIn();
 		trampo=$(this).attr("data-post-type");
 	    var data = {
 			'action': 'mostra_trampo',
@@ -42,7 +42,23 @@ jQuery(document).ready(function($) {
    			html=response.html;
    			// location.hash = "#conteudo-trabalhos";
    			$('#conteudo-trabalhos .interno').html(html);
+			$('#loader-trabalhos').fadeOut();
 			$('#conteudo-trabalhos .interno').fadeIn();
+
+			$( "#thumb_trabalho" ).load(function() {
+				$('#slider-trabalhos').owlCarousel({
+				    items : 1,
+				    itemsDesktop : [1000,1], //5 items between 1000px and 901px
+				    itemsDesktopSmall : [900,1], // betweem 900px and 601px
+				    autoPlay : true,
+				    navigation : false,
+				    pagination:true,
+				});
+			  // Handler for .load() called.
+	  			$('#link-ancora').click();
+
+			});
+
 		});	
 
 	});

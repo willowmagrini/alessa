@@ -338,7 +338,6 @@ if ( is_woocommerce_activated() ) {
 	require get_template_directory() . '/inc/woocommerce/functions.php';
 	require get_template_directory() . '/inc/woocommerce/template-tags.php';
 }
-add_image_size('single-galeria', 300, 400, 1 );
 add_image_size('blog', 400, 400);
 function add_class_attachment_link($html){
     $postid = get_the_ID();
@@ -351,15 +350,113 @@ add_filter('wp_get_attachment_link','add_class_attachment_link',10,1);
 add_filter( 'show_admin_bar', '__return_false' );
 
 
-function get_first_image() {
-	global $post, $posts;
+function imagem_para_thumbnail($post){
+	
+	if (is_int($post)) {
+		$parent_post = get_page($post) ;
+
+	}
+	else if(is_object($post)){
+		$parent_post = $post;	
+	}
+	// else if(is_string($post) ){
+	// 	$parent_post = get_page_by_title($post, OBJECT, 'post' );
+	// }
+	else{
+		return 'Entrada de post invalida, necessita ser id, objeto ou titulo';
+	}
+		$parent_post_id = $parent_post->ID;
+
+	
+
 	$first_img = '';
 	ob_start();
 	ob_end_clean();
-	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $parent_post->post_content, $matches);
 	$first_img = $matches [1] [0];
-	if(empty($first_img)){ //Defines a default image
-		$first_img = "/images/default.jpg";
-	}
-	return $first_img;
+	$filename = parse_url($first_img);
+	$filename = $filename['path'];
+	
+	// Check the type of file. We'll use this as the 'post_mime_type'.
+	$filetype = wp_check_filetype( basename( $filename ), null );
+	// Get the path to the upload directory.
+	$wp_upload_dir = wp_upload_dir();
+	// Prepare an array of post data for the attachment.
+	// return $filename;
+	$filename = str_replace('/alessa/wp-content/uploads/sites/20/', '', $filename);
+
+	// return $filename;
+	$attachment = array(
+	    'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ), 
+	    'post_mime_type' => $filetype['type'],
+	    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+	    'post_content'   => '',
+	    'post_status'    => 'inherit'
+	);
+	// Insert the attachment.
+	$attach_id = wp_insert_attachment( $attachment, $filename );
+	 
+	// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+	require_once( ABSPATH . 'wp-admin/includes/image.php' );
+	 
+	// Generate the metadata for the attachment, and update the database record.
+	$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+	wp_update_attachment_metadata( $attach_id, $attach_data );
+	 
+	set_post_thumbnail( $parent_post_id, $attach_id );
 }
+
+function get_first_image() {
+	global $post, $posts;
+	if (has_post_thumbnail($post->ID )) {
+		$first_img = "";
+	}
+	else{
+		$first_img = '';
+		ob_start();
+		ob_end_clean();
+		$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+		$first_img = $matches [1] [0];
+		$first_img = parse_url($first_img);
+		if(empty($first_img)){ //Defines a default image
+			$first_img = "/images/default.jpg";
+		}
+	}
+	
+	return $first_img['path'];
+}
+
+// Adiciona novos tamanhos de imagem
+// adiciona thumbnail galeria
+if ( function_exists( 'add_image_size' ) ) {
+add_image_size('horizontal', 300, 450, 1 );
+add_image_size('vertical', 450, 300, 1 );
+}
+add_filter('image_size_names_choose', 'my_image_sizes');
+function my_image_sizes($sizes) {
+$addsizes = array(
+"horizontal" => __( "Horizontal galeria"),
+"vertical" => __( "Vertical galeria")
+);
+$newsizes = array_merge($sizes, $addsizes);
+return $newsizes;
+}
+
+function add_styles()
+{
+	if (is_singular('soundart' )) {
+	?>
+    	<style type="text/css">
+    	<?php
+				echo 'teste'.get_field( 'fonte_do_titulo','option' );
+			echo get_the_id();
+			$fields = get_fields(get_the_id()); 
+			print_r($fields['fonte_do_titulo']['font']);
+		?>
+
+    	</style>
+    <?php
+	}
+   
+}
+add_action('wp_head', 'add_styles');
