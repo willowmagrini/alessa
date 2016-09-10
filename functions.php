@@ -202,7 +202,8 @@ add_action( 'after_setup_theme', 'odin_setup_features' );
  *
  * @since 2.2.0
  */
-function odin_widgets_init() {
+if (!function_exists('odin_widgets_init')) {
+ 	function odin_widgets_init() {
 	register_sidebar(
 		array(
 			'name' => __( 'Main Sidebar', 'odin' ),
@@ -218,23 +219,27 @@ function odin_widgets_init() {
 
 add_action( 'widgets_init', 'odin_widgets_init' );
 
+ } 
+
 /**
  * Flush Rewrite Rules for new CPTs and Taxonomies.
  *
  * @since 2.2.0
  */
-function odin_flush_rewrite() {
-	flush_rewrite_rules();
-}
+if (!function_exists('odin_flush_rewrite')) {
+	function odin_flush_rewrite() {
+		flush_rewrite_rules();
+	}
 
 add_action( 'after_switch_theme', 'odin_flush_rewrite' );
-
+}
 /**
  * Load site scripts.
  *
  * @since 2.2.0
  */
-function odin_enqueue_scripts() {
+if (!function_exists('odin_enqueue_scripts')) {
+	function odin_enqueue_scripts() {
 	$template_url = get_template_directory_uri();
 
 	// Loads Odin main stylesheet.
@@ -275,6 +280,8 @@ function odin_enqueue_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );
 
+}
+
 /**
  * Odin custom stylesheet URI.
  *
@@ -285,11 +292,14 @@ add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );
  *
  * @return string      New URI.
  */
-function odin_stylesheet_uri( $uri, $dir ) {
-	return $dir . '/assets/css/style.css';
+if (!function_exists('odin_stylesheet_uri')) {
+	function odin_stylesheet_uri( $uri, $dir ) {
+		return $dir . '/assets/css/style.css';
+	}
+
+	add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
 }
 
-add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
 
 /**
  * Query WooCommerce activation
@@ -339,12 +349,15 @@ if ( is_woocommerce_activated() ) {
 	require get_template_directory() . '/inc/woocommerce/template-tags.php';
 }
 add_image_size('blog', 400, 400);
-function add_class_attachment_link($html){
-    $postid = get_the_ID();
-    $html = str_replace('<a','<a class="cboxElement"',$html);
-    return $html;
+if (!function_exists('add_class_attachment_link')) {
+	function add_class_attachment_link($html){
+	    $postid = get_the_ID();
+	    $html = str_replace('<a','<a class="cboxElement"',$html);
+	    return $html;
+	}
+	add_filter('wp_get_attachment_link','add_class_attachment_link',10,1);
 }
-add_filter('wp_get_attachment_link','add_class_attachment_link',10,1);
+
 
 
 add_filter( 'show_admin_bar', '__return_false' );
@@ -444,14 +457,92 @@ return $newsizes;
 
 function add_styles()
 {
-	if (is_singular('soundart' )) {
+	if ( is_page_template('page-blog.php') OR is_singular('post' )) {
+		$pianos=get_page_by_title( 'Pianos');
+		// print_r($pianos);
+		$fundo = get_field('fundo',$pianos->ID);
+		echo $pianos->ID;
+		$estilo='background-image:url('.$fundo.');';
+
+		if (get_field('repetir_imagem',$pianos->ID) != 1) {
+			$estilo .= ";background-repeat:no-repeat;background-size:cover;background-attachment: fixed;";
+		}		
+		?>
+    	<style type="text/css">
+    	<?php
+		echo 
+			'body{ 
+				'.$estilo.';	
+			}';
+		?>
+
+    	</style>
+    	<?php
+	}
+	if (is_page_template('page-ritaleena.php')	){
+		$pianos=get_page_by_title( '[:pb]Fotos Ritaleena[:en]Ritaleena Photos[:]');
+		// print_r($pianos);
+		$fundo = get_field('fundo',$pianos->ID);
+		echo $pianos->ID;
+		$estilo='background-image:url('.$fundo.');';
+
+		if (get_field('repetir_imagem',$pianos->ID) != 1) {
+			$estilo .= ";background-repeat:no-repeat;background-size:cover;background-attachment: fixed;";
+		}		
+		?>
+    	<style type="text/css">
+    	<?php
+		echo 
+			'body{ 
+				'.$estilo.';	
+			}';
+		?>
+
+    	</style>
+    	<?php
+    }
+	if (is_singular('soundart' )OR is_singular('trilha') OR is_page( get_the_id() )) {
 	?>
     	<style type="text/css">
     	<?php
-				echo 'teste'.get_field( 'fonte_do_titulo','option' );
-			echo get_the_id();
 			$fields = get_fields(get_the_id()); 
-			print_r($fields['fonte_do_titulo']['font']);
+			echo 
+			'h1.entry-title{ 
+				font-family:"'.$fields['fonte_do_titulo']['font'].'"!important;
+				background-color: '.$fields['cor_do_fundo_da_fonte'].'!important;
+				color: '.$fields['cor_do_titulo'].'!important;
+			}';
+			
+		?>
+
+    	</style>
+    <?php
+    // print_r($fields);
+	}
+	$trab=get_page_by_title( '[:pb]Trabalhos[:]');
+	// echo 'aqui'.$trab->ID;
+	// print_r($trab);
+
+	$campos = get_fields($trab->ID); 
+	// print_r($campos); 
+	// echo "aqui";
+	// print_r($campos['fonte_soundart']['font']);
+	if (is_home()) {
+		?>
+		<style type="text/css">
+		<?php 
+		echo 
+			'#conteudo-trabalhos h2#titulo.trilha{
+				font-family:"'.$campos['fonte_trilhas']['font'].'";
+				font-size: '.$campos['tamanho_trilhas'].'px;
+				color:'.$campos['cor_trilhas'].';
+			}
+			#conteudo-trabalhos h2#titulo.soundart{
+				font-family:"'.$campos['fonte_soundart']['font'].'";
+				font-size: '.$campos['tamanho_soundart'].'px;
+				color:'.$campos['cor_soundart'].';
+			}
+			';
 		?>
 
     	</style>
@@ -460,3 +551,46 @@ function add_styles()
    
 }
 add_action('wp_head', 'add_styles');
+// 
+// 
+// 
+add_action('admin_head', 'some_itens_painel');
+
+function some_itens_painel() {
+  echo '<style>
+	.acfgfs-font-variants,.acfgfs-font-subsets{
+      display:none;
+    } 
+  </style>';
+}
+// 
+// fontes dos titulos soundart e trilhas 
+function google_fonts() {
+	function theme_slug_fonts_url() {
+	$trab=get_page_by_title( '[:pb]Trabalhos[:]');
+	$campos = get_fields($trab->ID); 
+	$font_families=array();
+	// foreach ($campos as $font => $args) {
+	// 	echo 'aqui';
+	// 	print_r($args['font']);
+	// 	// echo $args['font'].':'.$args['variants'][0].$args['subsets'][0]
+	// 	$font_families[]='';
+	// }
+	// print_r($campos);
+	$font_families=array($campos['fonte_soundart']['font'].':'.$campos['fonte_soundart']['variants'][0] , $campos['fonte_trilhas']['font'].':'.$campos['fonte_trilhas']['variants'][0]);
+		$fonts_url = '';
+		$query_args = array(
+			'family' => urlencode( implode( '|', $font_families ) ),
+			'subset' => urlencode( 'latin,latin-ext' ),
+			);
+		 
+		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+
+		return esc_url_raw( $fonts_url );
+	}
+	wp_register_style('googleFonts', theme_slug_fonts_url());
+    wp_enqueue_style( 'googleFonts');
+}
+
+
+add_action( 'wp_print_styles', 'google_fonts' );

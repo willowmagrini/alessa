@@ -1,10 +1,11 @@
 <?php 
 // funções do ajax
 function mostra_trampo_func(){
+	
 	$tipo=$_POST['trampo'];
 	$resposta=array();
 	$resposta['mensagem']= "fez ação e chamou funcao";
-	$resposta['html']= '<h2 id="titulo">';
+	$resposta['html']= '<h2 class="'.$tipo.'" id="titulo">';
 	if ($_POST['trampo']=='soundart') {
 		$resposta['html'].= 'Sound Art</h2>';
 	}

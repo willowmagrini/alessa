@@ -14,13 +14,23 @@ get_header(); ?>
 								
 				<article >
 					<div class="interno">
-					<header class="entry-header"><h1 class="entry-title">Alessa a cidade e os pianos</h1></header><!-- .entry-header -->'
+					<header class="entry-header"><h1 class="entry-title">Ritaleena</h1></header><!-- .entry-header -->'
 						<div class="entry-content col-md-12">
 						<?php 
 							while ( have_posts() ) : the_post();
-           	
-		
-								the_content( );
+		 					$gallery = get_post_gallery_images( $post );
+			            	echo '<div class="masonry-container">';
+		 					foreach ($gallery as $image) {
+		 						echo '
+							
+			                    	<div class="item">
+									   	<div class="well"> 
+											<img src="'	. $image.'">
+									   	</div>
+									</div>
+									';
+		 						
+		 					}
 			                 endwhile; 
 			                wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly
 

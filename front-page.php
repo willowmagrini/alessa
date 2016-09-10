@@ -23,7 +23,10 @@ get_header(); ?>
 
 					<!-- <img src="<?php echo get_template_directory_uri()."/assets/images/link-trilhas.png"; ?>" alt=""> -->
 				</a>
+		<?php 
+	
 
+	?>
 			</article>
 		</section>
 		<section class=" secao-front "id="conteudo-trabalhos">

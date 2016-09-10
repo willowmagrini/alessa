@@ -25,20 +25,25 @@
 
 <body 
 	<?php 
-		$pianos=get_page_by_title( 'Pianos');
+	// if ( is_page_template('page-blog.php')){
+	// 	$pianos=get_page_by_title( 'Pianos');
+	// }
+	// if ( is_page_template('page-ritaleena.php')){
+		
+	// }
 
-		// $pianos=get_page( '24');
+	// 	// $pianos=get_page( '24');
 
-	// echo get_field('repetir_imagem',$pianos->ID);
-	$fundo = get_field('fundo',$pianos->ID);
-	$estilo='background-image:url('.$fundo.');';
-	if (get_field('repetir_imagem',$pianos->ID) != 1) {
-		$estilo .= ";background-repeat:no-repeat;background-size:cover;background-attachment: fixed;";
-	}
-	// print_r($fundo);
-	if ( is_page_template('page-blog.php') OR is_singular('post' ) ) {
-		echo 'style="'.$estilo.'"';
-	}
+	// // echo get_field('repetir_imagem',$pianos->ID);
+	// $fundo = get_field('fundo',$pianos->ID);
+	// $estilo='background-image:url('.$fundo.');';
+	// if (get_field('repetir_imagem',$pianos->ID) != 1) {
+	// 	$estilo .= ";background-repeat:no-repeat;background-size:cover;background-attachment: fixed;";
+	// }
+	// // print_r($fundo);
+	// if ( is_page_template('page-blog.php') OR is_singular('post' ) OR is_page_template('page-ritaleena.php')) {
+	// 	echo 'style="'.$estilo.'"';
+	// }
 	body_class(); 
 	?>
 	>
