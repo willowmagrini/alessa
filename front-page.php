@@ -78,7 +78,7 @@ get_header(); ?>
 			</canvas>
 			<div class="img-release">
 				<img src="<?php echo get_template_directory_uri()."/assets/images/ritaleena.jpg"; ?>" alt="">
-				<h4 class="fotos-release-texto"><a href="#" id="ritafotos"><?php echo __('Fotos', 'odin') ?></a></h4>
+				<h4 class="fotos-release-texto"><a href="fotos-ritaleena/" id="ritafotos"><?php echo __('Fotos', 'odin') ?></a></h4>
 				<h4 class="fotos-release-texto"><a id='release-link' href="#release" id="ritalease"><?php  echo __('Release', 'odin') ?></a></h4>
 			</div>
 							

@@ -444,6 +444,8 @@ function get_first_image() {
 if ( function_exists( 'add_image_size' ) ) {
 add_image_size('horizontal', 300, 450, 1 );
 add_image_size('vertical', 450, 300, 1 );
+add_image_size('ritaleena', 400, 400 );
+
 }
 add_filter('image_size_names_choose', 'my_image_sizes');
 function my_image_sizes($sizes) {
@@ -594,3 +596,13 @@ function google_fonts() {
 
 
 add_action( 'wp_print_styles', 'google_fonts' );
+
+function my_gallery_shortcode( $output = '', $atts, $instance ) {
+	$return = $output; // fallback
+
+	// print_r($atts);
+
+	return $atts['ids'];
+}
+
+add_filter( 'post_gallery', 'my_gallery_shortcode', 10, 3 );

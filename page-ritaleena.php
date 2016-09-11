@@ -18,14 +18,19 @@ get_header(); ?>
 						<div class="entry-content col-md-12">
 						<?php 
 							while ( have_posts() ) : the_post();
-		 					$gallery = get_post_gallery_images( $post );
+		 					$gallery = get_post_gallery( $post );
 			            	echo '<div class="masonry-container">';
+			            	// print_r($gallery);
+			            	$gallery=explode(',', $gallery);
+			            	// print_r($gallery);
 		 					foreach ($gallery as $image) {
 		 						echo '
 							
 			                    	<div class="item">
 									   	<div class="well"> 
-											<img src="'	. $image.'">
+									   		<a href="'.wp_get_attachment_url($image).'" class="cboxElement">	
+												'.wp_get_attachment_image($image,'vertical').'
+											</a>
 									   	</div>
 									</div>
 									';

@@ -21,5 +21,7 @@ jQuery(document).ready(function($) {
 
 	// Tooltip.
 	$( '.odin-tooltip' ).tooltip();
+	$('a.cboxElement').colorbox({rel:'gal'});
+
 
 });
