@@ -44,7 +44,7 @@ get_header(); ?>
 				<div class="col-sm-8">
 					<div id="intro-linda">
 						<?php
-							$linda=get_page_by_title( 'linda');
+							$linda=get_page_by_slug( 'linda');
 							echo get_field('texto_inicial', $linda->ID); 
 						?>
 						</p>
@@ -83,7 +83,7 @@ get_header(); ?>
 			</div>
 							
 		<div id="release">
-			<?php $ritaleena=get_page_by_title( 'ritaleena'); 
+			<?php $ritaleena=get_page_by_slug( 'ritaleena-release'); 
 				$conteudo= $ritaleena->post_content;
 				$conteudo = apply_filters('the_content', $conteudo);
   				echo $conteudo;
@@ -99,7 +99,7 @@ get_header(); ?>
 					<h2>os Pianos</h2>
 					<div class="texto-pianos">
 						<?php 
-							$pianos=get_page_by_title( 'Pianos');
+							$pianos=get_page_by_slug( 'blog');
 							// print_r($pianos);
 							$pianos_conteudo=$pianos->post_content ;
 

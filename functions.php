@@ -460,10 +460,11 @@ return $newsizes;
 function add_styles()
 {
 	if ( is_page_template('page-blog.php') OR is_singular('post' )) {
-		$pianos=get_page_by_title( 'Pianos');
+		$pianos=get_page_by_slug('blog');
+		// $pianos=get_page_by_title( 'Pianos');
 		// print_r($pianos);
 		$fundo = get_field('fundo',$pianos->ID);
-		echo $pianos->ID;
+		// echo $pianos->ID;
 		$estilo='background-image:url('.$fundo.');';
 
 		if (get_field('repetir_imagem',$pianos->ID) != 1) {
@@ -482,13 +483,14 @@ function add_styles()
     	<?php
 	}
 	if (is_page_template('page-ritaleena.php')	){
-		$pianos=get_page_by_title( '[:pb]Fotos Ritaleena[:en]Ritaleena Photos[:]');
+		$ritaleena=get_page_by_slug( 'fotos-ritaleena');
 		// print_r($pianos);
-		$fundo = get_field('fundo',$pianos->ID);
-		echo $pianos->ID;
+		// print_r($ritaleena);
+		$fundo = get_field('fundo',$ritaleena->ID);
+		// echo $pianos->ID;
 		$estilo='background-image:url('.$fundo.');';
 
-		if (get_field('repetir_imagem',$pianos->ID) != 1) {
+		if (get_field('repetir_imagem',$ritaleena->ID) != 1) {
 			$estilo .= ";background-repeat:no-repeat;background-size:cover;background-attachment: fixed;";
 		}		
 		?>
@@ -503,25 +505,34 @@ function add_styles()
     	</style>
     	<?php
     }
-	if (is_singular('soundart' )OR is_singular('trilha') OR is_page( get_the_id() )) {
+	if (is_singular('soundart' )OR is_singular('trilha') OR is_page( get_the_id() )OR is_single(  )) {
 	?>
     	<style type="text/css">
     	<?php
 			$fields = get_fields(get_the_id()); 
+			$cor=hex2RGB($fields['cor_do_fundo_da_fonte']);
+// 			print_r($fields);
+			if (!isset($fields['opacidade'])) {
+				$fields['opacidade'] =1;
+			}
 			echo 
 			'h1.entry-title{ 
 				font-family:"'.$fields['fonte_do_titulo']['font'].'"!important;
-				background-color: '.$fields['cor_do_fundo_da_fonte'].'!important;
+				background-color: '.'rgba('.$cor['red'].','.$cor['green'].','.$cor['blue'].','.$fields['opacidade'].')'.'!important;
 				color: '.$fields['cor_do_titulo'].'!important;
+				font-size:'.$fields['tamanho'].'px!important;
 			}';
 			
 		?>
 
     	</style>
     <?php
+    	
+
     // print_r($fields);
 	}
-	$trab=get_page_by_title( '[:pb]Trabalhos[:]');
+	$trab=get_page_by_slug('trabalhos');
+	// $trab=get_page_by_title( '[:pb]Trabalhos[:]');
 	// echo 'aqui'.$trab->ID;
 	// print_r($trab);
 
@@ -544,6 +555,7 @@ function add_styles()
 				font-size: '.$campos['tamanho_soundart'].'px;
 				color:'.$campos['cor_soundart'].';
 			}
+			
 			';
 		?>
 
@@ -563,13 +575,19 @@ function some_itens_painel() {
 	.acfgfs-font-variants,.acfgfs-font-subsets{
       display:none;
     } 
+    #acf-fonte_soundart{
+		border-top: solid black 2px;
+	}
+	#acf-fonte_trilhas label[for="acf-field-fonte_trilhas"], #acf-fonte_soundart label[for="acf-field-fonte_soundart"]{
+		font-size:22px;
+	}
   </style>';
 }
 // 
 // fontes dos titulos soundart e trilhas 
 function google_fonts() {
 	function theme_slug_fonts_url() {
-	$trab=get_page_by_title( '[:pb]Trabalhos[:]');
+	$trab=get_page_by_slug( 'trabalhos');
 	$campos = get_fields($trab->ID); 
 	$font_families=array();
 	// foreach ($campos as $font => $args) {
@@ -579,6 +597,7 @@ function google_fonts() {
 	// 	$font_families[]='';
 	// }
 	// print_r($campos);
+	// echo $campos['fonte_soundart']['font'];
 	$font_families=array($campos['fonte_soundart']['font'].':'.$campos['fonte_soundart']['variants'][0] , $campos['fonte_trilhas']['font'].':'.$campos['fonte_trilhas']['variants'][0]);
 		$fonts_url = '';
 		$query_args = array(
@@ -599,10 +618,77 @@ add_action( 'wp_print_styles', 'google_fonts' );
 
 function my_gallery_shortcode( $output = '', $atts, $instance ) {
 	$return = $output; // fallback
+	if (is_page_template('page-ritaleena.php' )) {
+		return $atts['ids'];
+	}
+	else{
+		return $output;	
+	}
 
-	// print_r($atts);
-
-	return $atts['ids'];
 }
 
 add_filter( 'post_gallery', 'my_gallery_shortcode', 10, 3 );
+
+
+
+
+// funcao para obter páginas através da slug
+// funcao para obter páginas através da slug
+function get_page_by_slug( $page_slug, $output = OBJECT, $post_type = 'page' ) {
+	global $wpdb;
+
+	if ( is_array( $post_type ) ) {
+		$post_type = esc_sql( $post_type );
+		$post_type_in_string = "'" . implode( "','", $post_type ) . "'";
+		$sql = $wpdb->prepare( "
+			SELECT ID
+			FROM $wpdb->posts
+			WHERE post_name = %s
+			AND post_type IN ($post_type_in_string)
+		", $page_slug );
+	} else {
+		$sql = $wpdb->prepare( "
+			SELECT ID
+			FROM $wpdb->posts
+			WHERE post_name = %s
+			AND post_type = %s
+		", $page_slug, $post_type );
+	}
+
+	$page = $wpdb->get_var( $sql );
+
+	if ( $page )
+		return get_post( $page, $output );
+
+	return 'null';
+}
+// funcao para obter páginas através da slug
+// funcao para obter páginas através da slug
+
+
+
+/**
+* Convert a hexa decimal color code to its RGB equivalent
+*
+* @param string $hexStr (hexadecimal color value)
+* @param boolean $returnAsString (if set true, returns the value separated by the separator character. Otherwise returns associative array)
+* @param string $seperator (to separate RGB values. Applicable only if second parameter is true.)
+* @return array or string (depending on second parameter. Returns False if invalid hex color value)
+*/                                                                                                 
+function hex2RGB($hexStr, $returnAsString = false, $seperator = ',') {
+    $hexStr = preg_replace("/[^0-9A-Fa-f]/", '', $hexStr); // Gets a proper hex string
+    $rgbArray = array();
+    if (strlen($hexStr) == 6) { //If a proper hex code, convert using bitwise operation. No overhead... faster
+        $colorVal = hexdec($hexStr);
+        $rgbArray['red'] = 0xFF & ($colorVal >> 0x10);
+        $rgbArray['green'] = 0xFF & ($colorVal >> 0x8);
+        $rgbArray['blue'] = 0xFF & $colorVal;
+    } elseif (strlen($hexStr) == 3) { //if shorthand notation, need some string manipulations
+        $rgbArray['red'] = hexdec(str_repeat(substr($hexStr, 0, 1), 2));
+        $rgbArray['green'] = hexdec(str_repeat(substr($hexStr, 1, 1), 2));
+        $rgbArray['blue'] = hexdec(str_repeat(substr($hexStr, 2, 1), 2));
+    } else {
+        return false; //Invalid hex color code
+    }
+    return $returnAsString ? implode($seperator, $rgbArray) : $rgbArray; // returns the rgb string or the associative array
+} 

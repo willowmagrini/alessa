@@ -22,7 +22,7 @@ get_header(); ?>
 
 							$wp_query = new WP_Query(array( 
 			                'post_type'         => 'post',
-			                'posts_per_page'    => 10,
+			                'posts_per_page'    => -1,
 			                
 			            ));
 
@@ -80,8 +80,14 @@ get_header(); ?>
 			            else{
 			                echo __('Não existem posts.', "odin");
 			            }
-			            echo do_shortcode('[googlemaps https://maps.google.com/maps/ms?msa=0&msid=215386675363289333682.0004ba72ca008e2cd80c6&hl=en&ie=UTF8&ll=-23.53979,-46.673041&spn=0.024118,0.080138&t=m&iwloc=0004c7c77f9b972086896&output=embed]' );
 						?>
+						<div class="col-md-3"></div>
+						<div class="col-md-6">
+							<?php
+								echo do_shortcode('[googlemaps https://maps.google.com/maps/ms?msa=0&msid=215386675363289333682.0004ba72ca008e2cd80c6&hl=en&ie=UTF8&ll=-23.53979,-46.673041&spn=0.024118,0.080138&t=m&iwloc=0004c7c77f9b972086896&output=embed]' );
+ 							?>
+						</div>
+						<div class="col-md-3"></div>
 						</div> <!-- class="entry-content col-md-12"> -->
 					</div><!--interno  -->
 				</article>

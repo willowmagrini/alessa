@@ -20,7 +20,7 @@ get_header(); ?>
 
 					// Include the page content template.
 					get_template_part( 'content', 'page' );
-
+					print_r(get_page(the_id()));
 					// If comments are open or we have at least one comment, load up the comment template.
 					if ( comments_open() || get_comments_number() ) :
 						comments_template();

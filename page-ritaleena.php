@@ -29,7 +29,7 @@ get_header(); ?>
 			                    	<div class="item">
 									   	<div class="well"> 
 									   		<a href="'.wp_get_attachment_url($image).'" class="cboxElement">	
-												'.wp_get_attachment_image($image,'vertical').'
+												'.wp_get_attachment_image($image,'blog').'
 											</a>
 									   	</div>
 									</div>
