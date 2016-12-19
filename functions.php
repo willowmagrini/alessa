@@ -531,16 +531,17 @@ function add_styles()
 
     // print_r($fields);
 	}
-	$trab=get_page_by_slug('trabalhos');
+	
+	// print_r($campos); 
+	// echo "aqui";
+	// print_r($campos['fonte_soundart']['font']);
+	if (is_home()) {
+		$trab=get_page_by_slug('trabalhos');
 	// $trab=get_page_by_title( '[:pb]Trabalhos[:]');
 	// echo 'aqui'.$trab->ID;
 	// print_r($trab);
 
 	$campos = get_fields($trab->ID); 
-	// print_r($campos); 
-	// echo "aqui";
-	// print_r($campos['fonte_soundart']['font']);
-	if (is_home()) {
 		?>
 		<style type="text/css">
 		<?php 
@@ -585,33 +586,36 @@ function some_itens_painel() {
 }
 // 
 // fontes dos titulos soundart e trilhas 
-function google_fonts() {
-	function theme_slug_fonts_url() {
-	$trab=get_page_by_slug( 'trabalhos');
-	$campos = get_fields($trab->ID); 
-	$font_families=array();
-	// foreach ($campos as $font => $args) {
-	// 	echo 'aqui';
-	// 	print_r($args['font']);
-	// 	// echo $args['font'].':'.$args['variants'][0].$args['subsets'][0]
-	// 	$font_families[]='';
-	// }
-	// print_r($campos);
-	// echo $campos['fonte_soundart']['font'];
-	$font_families=array($campos['fonte_soundart']['font'].':'.$campos['fonte_soundart']['variants'][0] , $campos['fonte_trilhas']['font'].':'.$campos['fonte_trilhas']['variants'][0]);
-		$fonts_url = '';
-		$query_args = array(
-			'family' => urlencode( implode( '|', $font_families ) ),
-			'subset' => urlencode( 'latin,latin-ext' ),
-			);
-		 
-		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+if (function_exists('get_fields')) {
+	function google_fonts() {
+		function theme_slug_fonts_url() {
+		$trab=get_page_by_slug( 'trabalhos');
+		$campos = get_fields($trab->ID); 
+		$font_families=array();
+		// foreach ($campos as $font => $args) {
+		// 	echo 'aqui';
+		// 	print_r($args['font']);
+		// 	// echo $args['font'].':'.$args['variants'][0].$args['subsets'][0]
+		// 	$font_families[]='';
+		// }
+		// print_r($campos);
+		// echo $campos['fonte_soundart']['font'];
+		$font_families=array($campos['fonte_soundart']['font'].':'.$campos['fonte_soundart']['variants'][0] , $campos['fonte_trilhas']['font'].':'.$campos['fonte_trilhas']['variants'][0]);
+			$fonts_url = '';
+			$query_args = array(
+				'family' => urlencode( implode( '|', $font_families ) ),
+				'subset' => urlencode( 'latin,latin-ext' ),
+				);
+			 
+			$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
 
-		return esc_url_raw( $fonts_url );
+			return esc_url_raw( $fonts_url );
+		}
+		wp_register_style('googleFonts', theme_slug_fonts_url());
+	    wp_enqueue_style( 'googleFonts');
 	}
-	wp_register_style('googleFonts', theme_slug_fonts_url());
-    wp_enqueue_style( 'googleFonts');
 }
+
 
 
 add_action( 'wp_print_styles', 'google_fonts' );
