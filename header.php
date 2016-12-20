@@ -25,6 +25,11 @@
 
 <body 
 	<?php 
+	
+	if (get_field('imagem_do_fundo',$post->ID)){
+
+		echo 'style="background-image:url('.get_field('imagem_do_fundo',$post->ID)['url'].');background-attachment:fixed;"';
+	}
 	// if ( is_page_template('page-blog.php')){
 	// 	$pianos=get_page_by_title( 'Pianos');
 	// }
