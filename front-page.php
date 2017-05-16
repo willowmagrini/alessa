@@ -3,10 +3,36 @@ get_header(); ?>
 
 	<main id="content" class="home <?php echo odin_classes_page_full(); ?>" tabindex="-1" role="main">
 		<section class="secao-front amarelo" id="inicio">
-			
+			<div class="parallax">
+			    <div id="group4" class="parallax__group">
+
+						<div class="parallax__layer parallax__layer--base">
+			        <div class="title">produz música e tecnologia</div>
+			      </div>
+						<!-- <div class="parallax__layer parallax__layer--base vel3">
+			        <div class="title">Clique e saiba mais!</div>
+			      </div> -->
+			      <div class="parallax__layer parallax__layer--back">
+			        <div class="title">cria bloco de carnaval</div>
+			      </div>
+						<div class="parallax__layer parallax__layer--back vel2">
+			        <div class="title2 title">tem um blog de pianos</div>
+			      </div>
+						<div class="parallax__layer parallax__layer--fore" >
+			        <div class="title title3">Musicista, cantora</div>
+			      </div>
+			      <div class="parallax__layer parallax__layer--deep">
+			        <div class="title">Alessa Camarinha</div>
+			      </div>
+						<div id="fim">
+
+						</div>
+			    </div>
+
+			  </div>			</div>
 		</section>
 		<section class="secao-front" id="piano">
-			
+
 		</section>
 		<section class="secao-front" id="sound-trilha">
 			<article class="trabalho" id="soundart">
@@ -23,8 +49,8 @@ get_header(); ?>
 
 					<!-- <img src="<?php echo get_template_directory_uri()."/assets/images/link-trilhas.png"; ?>" alt=""> -->
 				</a>
-		<?php 
-	
+		<?php
+
 
 	?>
 			</article>
@@ -32,12 +58,12 @@ get_header(); ?>
 		<section class=" secao-front "id="conteudo-trabalhos">
 			<a href="#ancora" id="link-ancora"></a>
 			<div id="ancora"></div>
-			
+
 			<div class="interno">
 			</div>
 		</section>
 		<!-- <section class="secao-front" id="transicao">
-			
+
 		</section> -->
 		<section class="secao-front" id="linda">
 			<div class="interno">
@@ -45,13 +71,13 @@ get_header(); ?>
 					<div id="intro-linda">
 						<?php
 							$linda=get_page_by_slug( 'linda');
-							echo get_field('texto_inicial', $linda->ID); 
+							echo get_field('texto_inicial', $linda->ID);
 						?>
 						</p>
-						
+
 					</div>
 					<div class="linda-post">
-						<?php 
+						<?php
   							// print_r($linda);
   							echo get_the_post_thumbnail($linda->ID );
   							$content= $linda->post_content;
@@ -61,18 +87,18 @@ get_header(); ?>
 						<a target="_blank" href="<?php echo get_field('link_da_materia',$linda->ID);?>">
 							<?php  echo __('Leia a materia completa.', 'odin'); ?>
 						</a>
-						
+
 					</div>
 				</div>
 				<img  id="img-linda" src="<?php echo get_template_directory_uri()."/assets/images/linda-barras.png"; ?>" alt="">
 
 				<div class="col-sm-4">
-				</div>	
+				</div>
 				<div class="clearfix"></div>
 			</div>
-			
 
-		</section> 
+
+		</section>
 		<section class="secao-front" id="ritaleena">
 			<canvas  id='confetti' >
 			</canvas>
@@ -81,9 +107,9 @@ get_header(); ?>
 				<h4 class="fotos-release-texto"><a href="fotos-ritaleena/" id="ritafotos"><?php echo __('Fotos', 'odin') ?></a></h4>
 				<h4 class="fotos-release-texto"><a id='release-link' href="#release" id="ritalease"><?php  echo __('Release', 'odin') ?></a></h4>
 			</div>
-							
+
 		<div id="release">
-			<?php $ritaleena=get_page_by_slug( 'ritaleena-release'); 
+			<?php $ritaleena=get_page_by_slug( 'ritaleena-release');
 				$conteudo= $ritaleena->post_content;
 				$conteudo = apply_filters('the_content', $conteudo);
   				echo $conteudo;
@@ -95,10 +121,10 @@ get_header(); ?>
 				<div class="col-sm-6"></div>
 				<div class="col-sm-6">
 					<h1>Alessa</h1>
-					<h2>a Cidade e</h2> 
+					<h2>a Cidade e</h2>
 					<h2>os Pianos</h2>
 					<div class="texto-pianos">
-						<?php 
+						<?php
 							$pianos=get_page_by_slug( 'blog');
 							// print_r($pianos);
 							$pianos_conteudo=$pianos->post_content ;
@@ -108,19 +134,19 @@ get_header(); ?>
 
 						 ?>
 					</div>
-					<p class="ver-piano"><a href="blog">Venha ver o blog</a></p>
+					<p class="ver-piano"><a href="blog"><?php echo __('Check out the blog', 'odin'); ?></a></p>
 
 				</div>
 				<div class="clearfix"></div>
 			</div>
 
-		</section> 
+		</section>
 		<section class="secao-front" id="agenda">
 			<?php get_template_part( 'content', 'agenda' ); ?>
 			<div class="clearfix"></div>
 
-		</section> 
-		
+		</section>
+
 		<section class="secao-front" id="contato">
 			<img class="titulo-contato" src="<?php echo get_template_directory_uri()."/assets/images/titulo-contato.png"; ?>" alt="">
 			<article id="interno-contato" class="row">
@@ -128,20 +154,20 @@ get_header(); ?>
 					<div id="facebook-feed"></div>
 				</div>
 				<div class="col-md-6 pull-right" id="form-contato">
-					<?php 
-					echo do_shortcode( '[contact-form-7 id="10" title="Contato"]' ); ?>	
 					<?php
-					 // echo do_shortcode( '[contact-form-7 id="4" title="Formulário de contato 1"]' ); ?>		
-	
+					echo do_shortcode( '[contact-form-7 id="10" title="Contato"]' ); ?>
+					<?php
+					 // echo do_shortcode( '[contact-form-7 id="4" title="Formulário de contato 1"]' ); ?>
+
 				</div>
 			</article>
 			<div class="clearfix"></div>
 
-		</section>	
-			
+		</section>
+
 <div id="loader-trabalhos">
 				<img  src="<?php echo get_template_directory_uri()."/assets/images/ajax-loading.gif"; ?>" alt="">
-			</div>		
+			</div>
 	</main><!-- #main -->
 
 <?php

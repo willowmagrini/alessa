@@ -219,7 +219,7 @@ if (!function_exists('odin_widgets_init')) {
 
 add_action( 'widgets_init', 'odin_widgets_init' );
 
- } 
+ }
 
 /**
  * Flush Rewrite Rules for new CPTs and Taxonomies.
@@ -364,13 +364,13 @@ add_filter( 'show_admin_bar', '__return_false' );
 
 
 function imagem_para_thumbnail($post){
-	
+
 	if (is_int($post)) {
 		$parent_post = get_page($post) ;
 
 	}
 	else if(is_object($post)){
-		$parent_post = $post;	
+		$parent_post = $post;
 	}
 	// else if(is_string($post) ){
 	// 	$parent_post = get_page_by_title($post, OBJECT, 'post' );
@@ -380,7 +380,7 @@ function imagem_para_thumbnail($post){
 	}
 		$parent_post_id = $parent_post->ID;
 
-	
+
 
 	$first_img = '';
 	ob_start();
@@ -389,7 +389,7 @@ function imagem_para_thumbnail($post){
 	$first_img = $matches [1] [0];
 	$filename = parse_url($first_img);
 	$filename = $filename['path'];
-	
+
 	// Check the type of file. We'll use this as the 'post_mime_type'.
 	$filetype = wp_check_filetype( basename( $filename ), null );
 	// Get the path to the upload directory.
@@ -400,7 +400,7 @@ function imagem_para_thumbnail($post){
 
 	// return $filename;
 	$attachment = array(
-	    'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ), 
+	    'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ),
 	    'post_mime_type' => $filetype['type'],
 	    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
 	    'post_content'   => '',
@@ -408,14 +408,14 @@ function imagem_para_thumbnail($post){
 	);
 	// Insert the attachment.
 	$attach_id = wp_insert_attachment( $attachment, $filename );
-	 
+
 	// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
 	require_once( ABSPATH . 'wp-admin/includes/image.php' );
-	 
+
 	// Generate the metadata for the attachment, and update the database record.
 	$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
 	wp_update_attachment_metadata( $attach_id, $attach_data );
-	 
+
 	set_post_thumbnail( $parent_post_id, $attach_id );
 }
 
@@ -435,15 +435,15 @@ function get_first_image() {
 			$first_img = "/images/default.jpg";
 		}
 	}
-	
+
 	return $first_img['path'];
 }
 
 // Adiciona novos tamanhos de imagem
 // adiciona thumbnail galeria
 if ( function_exists( 'add_image_size' ) ) {
-add_image_size('horizontal', 300, 450, 1 );
-add_image_size('vertical', 450, 300, 1 );
+add_image_size('vertical', 300, 450, 1 );
+add_image_size('horizontal', 450, 300, 1 );
 add_image_size('ritaleena', 400, 400 );
 
 }
@@ -469,13 +469,13 @@ function add_styles()
 
 		if (get_field('repetir_imagem',$pianos->ID) != 1) {
 			$estilo .= ";background-repeat:no-repeat;background-size:cover;background-attachment: fixed;";
-		}		
+		}
 		?>
     	<style type="text/css">
     	<?php
-		echo 
-			'body{ 
-				'.$estilo.';	
+		echo
+			'body{
+				'.$estilo.';
 			}';
 		?>
 
@@ -492,13 +492,13 @@ function add_styles()
 
 		if (get_field('repetir_imagem',$ritaleena->ID) != 1) {
 			$estilo .= ";background-repeat:no-repeat;background-size:cover;background-attachment: fixed;";
-		}		
+		}
 		?>
     	<style type="text/css">
     	<?php
-		echo 
-			'body{ 
-				'.$estilo.';	
+		echo
+			'body{
+				'.$estilo.';
 			}';
 		?>
 
@@ -509,30 +509,30 @@ function add_styles()
 	?>
     	<style type="text/css">
     	<?php
-			$fields = get_fields(get_the_id()); 
+			$fields = get_fields(get_the_id());
 			$cor=hex2RGB($fields['cor_do_fundo_da_fonte']);
 // 			print_r($fields);
 			if (!isset($fields['opacidade'])) {
 				$fields['opacidade'] =1;
 			}
-			echo 
-			'h1.entry-title{ 
+			echo
+			'h1.entry-title{
 				font-family:"'.$fields['fonte_do_titulo']['font'].'"!important;
 				background-color: '.'rgba('.$cor['red'].','.$cor['green'].','.$cor['blue'].','.$fields['opacidade'].')'.'!important;
 				color: '.$fields['cor_do_titulo'].'!important;
 				font-size:'.$fields['tamanho'].'px!important;
 			}';
-			
+
 		?>
 
     	</style>
     <?php
-    	
+
 
     // print_r($fields);
 	}
-	
-	// print_r($campos); 
+
+	// print_r($campos);
 	// echo "aqui";
 	// print_r($campos['fonte_soundart']['font']);
 	if (is_home()) {
@@ -540,42 +540,43 @@ function add_styles()
 	// $trab=get_page_by_title( '[:pb]Trabalhos[:]');
 	// echo 'aqui'.$trab->ID;
 	// print_r($trab);
+		if (null !== get_fields($trab->ID)) {
+			$campos = get_fields($trab->ID);
+				?>
+				<style type="text/css">
+				<?php
+				echo
+					'#conteudo-trabalhos h2#titulo.trilha{
+						font-family:"'.$campos['fonte_trilhas']['font'].'";
+						font-size: '.$campos['tamanho_trilhas'].'px;
+						color:'.$campos['cor_trilhas'].';
+					}
+					#conteudo-trabalhos h2#titulo.soundart{
+						font-family:"'.$campos['fonte_soundart']['font'].'";
+						font-size: '.$campos['tamanho_soundart'].'px;
+						color:'.$campos['cor_soundart'].';
+					}
 
-	$campos = get_fields($trab->ID); 
-		?>
-		<style type="text/css">
-		<?php 
-		echo 
-			'#conteudo-trabalhos h2#titulo.trilha{
-				font-family:"'.$campos['fonte_trilhas']['font'].'";
-				font-size: '.$campos['tamanho_trilhas'].'px;
-				color:'.$campos['cor_trilhas'].';
-			}
-			#conteudo-trabalhos h2#titulo.soundart{
-				font-family:"'.$campos['fonte_soundart']['font'].'";
-				font-size: '.$campos['tamanho_soundart'].'px;
-				color:'.$campos['cor_soundart'].';
-			}
-			
-			';
-		?>
+					';
+				?>
 
-    	</style>
-    <?php
-	}
-   
+		    	</style>
+		    <?php
+			}
+		}
+
 }
 add_action('wp_head', 'add_styles');
-// 
-// 
-// 
+//
+//
+//
 add_action('admin_head', 'some_itens_painel');
 
 function some_itens_painel() {
   echo '<style>
 	.acfgfs-font-variants,.acfgfs-font-subsets{
       display:none;
-    } 
+    }
     #acf-fonte_soundart{
 		border-top: solid black 2px;
 	}
@@ -584,13 +585,13 @@ function some_itens_painel() {
 	}
   </style>';
 }
-// 
-// fontes dos titulos soundart e trilhas 
+//
+// fontes dos titulos soundart e trilhas
 if (function_exists('get_fields')) {
 	function google_fonts() {
 		function theme_slug_fonts_url() {
 		$trab=get_page_by_slug( 'trabalhos');
-		$campos = get_fields($trab->ID); 
+		$campos = get_fields($trab->ID);
 		$font_families=array();
 		// foreach ($campos as $font => $args) {
 		// 	echo 'aqui';
@@ -606,7 +607,7 @@ if (function_exists('get_fields')) {
 				'family' => urlencode( implode( '|', $font_families ) ),
 				'subset' => urlencode( 'latin,latin-ext' ),
 				);
-			 
+
 			$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
 
 			return esc_url_raw( $fonts_url );
@@ -626,7 +627,7 @@ function my_gallery_shortcode( $output = '', $atts, $instance ) {
 		return $atts['ids'];
 	}
 	else{
-		return $output;	
+		return $output;
 	}
 
 }
@@ -678,7 +679,7 @@ function get_page_by_slug( $page_slug, $output = OBJECT, $post_type = 'page' ) {
 * @param boolean $returnAsString (if set true, returns the value separated by the separator character. Otherwise returns associative array)
 * @param string $seperator (to separate RGB values. Applicable only if second parameter is true.)
 * @return array or string (depending on second parameter. Returns False if invalid hex color value)
-*/                                                                                                 
+*/
 function hex2RGB($hexStr, $returnAsString = false, $seperator = ',') {
     $hexStr = preg_replace("/[^0-9A-Fa-f]/", '', $hexStr); // Gets a proper hex string
     $rgbArray = array();
@@ -695,4 +696,4 @@ function hex2RGB($hexStr, $returnAsString = false, $seperator = ',') {
         return false; //Invalid hex color code
     }
     return $returnAsString ? implode($seperator, $rgbArray) : $rgbArray; // returns the rgb string or the associative array
-} 
+}

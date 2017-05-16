@@ -1,8 +1,9 @@
 jQuery(document).ready(function($) {
 	// fitVids.
 	$( '.entry-content' ).fitVids();
-	$( '.embed-youtube' ).fitVids();
+	$( '.zilla-one-third' ).fitVids();
 	$( '.googlemaps iframe' ).fitVids();
+	$( '#main-content iframe' ).fitVids();
 
 
 
@@ -21,7 +22,7 @@ jQuery(document).ready(function($) {
 
 	// Tooltip.
 	$( '.odin-tooltip' ).tooltip();
-	$('a.cboxElement').colorbox({rel:'gal'});
+	// $('a.cboxElement').colorbox({rel:'gal'});
 
 
 });
