@@ -1,35 +1,27 @@
 <?php
 get_header(); ?>
-
 	<main id="content" class="home <?php echo odin_classes_page_full(); ?>" tabindex="-1" role="main">
 		<section class="secao-front amarelo" id="inicio">
-			<div class="parallax">
-			    <div id="group4" class="parallax__group">
+			<div id="scroll-paralax" class="parallax">
 
-						<div class="parallax__layer parallax__layer--base">
-			        <div class="title">produz música e tecnologia</div>
+			    <div id="group4" class="parallax__group">
+						<div class="parallax__layer parallax__layer--fore vel2">
+			        <div class="title2 title">Aqui você poderá ver uma variedade de projetos, de trilhas à arte sonora, de blocos de carnaval à mapas de pianos, da música popular à música experimental.<br><a id="btn-mais"href="#fim">Ver mais</a></div>
 			      </div>
-						<!-- <div class="parallax__layer parallax__layer--base vel3">
-			        <div class="title">Clique e saiba mais!</div>
-			      </div> -->
-			      <div class="parallax__layer parallax__layer--back">
-			        <div class="title">cria bloco de carnaval</div>
-			      </div>
-						<div class="parallax__layer parallax__layer--back vel2">
-			        <div class="title2 title">tem um blog de pianos</div>
-			      </div>
-						<div class="parallax__layer parallax__layer--fore" >
-			        <div class="title title3">Musicista, cantora</div>
+						<div class="parallax__layer parallax__layer--back" >
+			        <div class="title title3">Sou musicista, cantora e trabalho com música e tecnologia.</div>
 			      </div>
 			      <div class="parallax__layer parallax__layer--deep">
-			        <div class="title">Alessa Camarinha</div>
+			        <div class="title">Olá, eu sou a Alessa e este é meu portfólio online.</div>
 			      </div>
-						<div id="fim">
 
-						</div>
 			    </div>
 
-			  </div>			</div>
+			</div>
+			<div id="fim">
+				Formada em Comunicação Social pela PUC-SP (2006) e em Música Popular na Faculdade Santa Marcelina (2011), tem pós graduação em Canção Popular (2012) também pela Santa Marcelina. Concluiu seu mestrado em Studio Composition na Goldsmiths, University of London na Inglaterra (2014). Se apresenta na cena musical paulistana desde 2004 onde cantou, tocou e arranjou para bandas como Estatuto da Gafieira, Funkalleros e Ale Soda Pop. Foi idealizadora do projeto Alessa, a Cidade e os Pianos, blog musical que dedica-se a mapear os pianos da cidade de São Paulo. É idealizadora, vocalista e diretora musical do Bloco Ritaleena, cordão carnavalesco de São Paulo que homenageia a cantora Rita Lee. É editora e colunista da revista de cultura eletroacústica linda do coletivo NME (Nova Música Eletroacústica). Além de seu trabalho em performance, atualmente pesquisa as áreas de música e tecnologia.<br><a id="voltar" href="#">Voltar</a>
+			</div>
+
 		</section>
 		<section class="secao-front" id="piano">
 
@@ -150,10 +142,10 @@ get_header(); ?>
 		<section class="secao-front" id="contato">
 			<img class="titulo-contato" src="<?php echo get_template_directory_uri()."/assets/images/titulo-contato.png"; ?>" alt="">
 			<article id="interno-contato" class="row">
-				<div class="col-md-6" id="socials-contato">
+				<div class="col-sm-6" id="socials-contato">
 					<div id="facebook-feed"></div>
 				</div>
-				<div class="col-md-6 pull-right" id="form-contato">
+				<div class="col-sm-6 pull-right" id="form-contato">
 					<?php
 					echo do_shortcode( '[contact-form-7 id="10" title="Contato"]' ); ?>
 					<?php

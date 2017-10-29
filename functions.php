@@ -697,3 +697,13 @@ function hex2RGB($hexStr, $returnAsString = false, $seperator = ',') {
     }
     return $returnAsString ? implode($seperator, $rgbArray) : $rgbArray; // returns the rgb string or the associative array
 }
+
+
+// add_action('wp_enqueue_scripts', 'essl_enqueue_jquery', 999 );
+//
+// 		function essl_enqueue_jquery() {
+// 			wp_deregister_script( 'jquery-easing' );
+// 			wp_register_script( 'jquery-easing', '//cdn.jsdelivr.net/jquery.easing/1.3/jquery.easing.1.3.js',array( 'jquery' ) );
+// 			wp_enqueue_script( 'jquery' );
+// 			wp_enqueue_script('jquery-easing');
+// 		}		

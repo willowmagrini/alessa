@@ -1,7 +1,8 @@
-
 <?php
 /**
- * The template for displaying 404 pages (Not Found).
+ * Template Name: Blog
+ *
+ * The template for displaying pages with sidebar.
  *
  * @package Odin
  * @since 2.2.0
@@ -11,21 +12,18 @@ get_header(); ?>
 	<div class="fundo">
 		<div id="primary" class="<?php echo odin_classes_page_full(); ?>">
 			<main id="main-content" class="site-main" role="main">
-				<div class="interno">
-					<header class="page-header">
-						<h1 class="page-title"><?php _e( 'Not Found', 'odin' ); ?></h1>
-					</header>
 
-					<div class="page-content">
-						<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'odin' ); ?></p>
+				<article >
+					<div class="interno">
+					<header class="entry-header"><h1 class="entry-title"><?php echo __('Página não encontrada') ?></h1></header><!-- .entry-header -->'
+						<div class="entry-content col-md-12">
+							<h3>Pelo visto você entrou em uma página que não existe...</h3>
 
-						<?php get_search_form(); ?>
-					</div><!-- .page-content -->
-				</div>	
+						</div> <!-- class="entry-content col-md-12"> -->
+					</div><!--interno  -->
+				</article>
 			</main><!-- #main -->
 		</div><!-- #primary -->
 	</div>
 <?php
 get_footer();
-
-

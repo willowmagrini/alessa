@@ -3,7 +3,7 @@
 <div id="eventos-container">
 	<div class="eventos-interno">
 		 <?php $current_date = get_the_time('U');
-            $wp_query = new WP_Query(array( 
+            $wp_query = new WP_Query(array(
                 'post_type'         => 'eventos',
                 'posts_per_page'    => 2,
                 'orderby'       => '_start_eventtimestamp',
@@ -17,9 +17,9 @@
                 )
             ));
             if ($wp_query->have_posts()) {
-                while ( $wp_query->have_posts() ) : $wp_query->the_post(); 
+                while ( $wp_query->have_posts() ) : $wp_query->the_post();
                     $date = get_post_meta(get_the_id(),'_start_eventtimestamp', true);
-                    echo '<div class="evento col-sm-6">
+                    echo '<div class="evento col-lg-6">
                         <div class="data-evento inline-block">
                             <h2 class="dia">'.date_i18n('d' , $date).'</h2>
                             <h5 class="mes">'.date_i18n("F", mktime(0, 0, 0, date_i18n('m', $date ), 10)).'</h5>
@@ -34,16 +34,16 @@
                     </div>
                     <!--class="evento"-->';
 
-                 endwhile; 
+                 endwhile;
                 wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly
 
             }
             else{
                 echo __('Não há eventos agendados no momento.', "skt-hotel");
             }
-            
+
          ?>
-		
+
 	</div>
 	<div class="borda esquerda">
 		<div class="bola"></div>
@@ -60,10 +60,10 @@
 		<div class="bola"></div>
 		<div class="bola"></div>
 		<div class="bola"></div>
-		<div class="bola"></div>					
+		<div class="bola"></div>
 	</div>
 	<div class="borda topo">
-		
+
 		<div class="bola "></div>
 		<div class="bola "></div>
 		<div class="bola "></div>
@@ -126,7 +126,7 @@
 		<div class="bola "></div>
 		<div class="bola "></div>
 		<div class="bola "></div>
-	</div>	
+	</div>
 	<div class="borda direita">
 		<div class="bola"></div>
 		<div class="bola"></div>
@@ -143,7 +143,7 @@
 		<div class="bola"></div>
 		<div class="bola"></div>
 		<div class="bola"></div>
-		
+
 
 	</div>
 	<div class="clearfix"></div>

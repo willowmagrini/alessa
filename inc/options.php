@@ -1,4 +1,4 @@
-<?php $odin_theme_options = new Odin_Theme_Options( 
+<?php $odin_theme_options = new Odin_Theme_Options(
     'slug-da-pagina', // Slug/ID da página (Obrigatório)
     __( 'Opções do tema', 'odin' ), // Titulo da página (Obrigatório)
     'manage_options' // Nível de permissão (Opcional) [padrão é manage_options]
@@ -33,14 +33,21 @@ $odin_theme_options->set_fields(
             'tab'   => 'odin_general', // Sessão da aba odin_general
             'title' => __( 'Destaque', 'odin' ),
             'fields' => array(
-                array(   
-				    'id'          => 'destaque_check', // Required
-				    'label'       => __( 'Mostrar destaque na home?', 'odin' ), // Required
-				    'type'        => 'checkbox', // Required
-				    // 'attributes' => array(), // Optional (html input elements)
-				    // 'default'    => '', // Optional (1 for checked)
-				    'description' => __( 'Marcar para exibir o destaque na home', 'odin' ), // Optional
-				),
+              array(
+      				      'id' => 'linha_1',
+      				      'label' => __( 'Linha 1', 'odin' ),
+      				      'type' => 'text'
+      				),
+              array(
+      				      'id' => 'linha_2',
+                    'label' => __( 'Linha 2', 'odin' ),
+      				      'type' => 'text'
+      				),
+              array(
+      				      'id' => 'linha_3',
+                    'label' => __( 'Linha 3', 'odin' ),
+      				      'type' => 'text'
+      				),
 				array(
 				    'id'          => 'destaque', // Obrigatório
 				    'label'       => __( 'Texto de destaque', 'odin' ), // Obrigatório
@@ -51,14 +58,8 @@ $odin_theme_options->set_fields(
 				        'textarea_rows' => 10
 				    ),
 				),
-				array(
-				    'id'          => 'destaque_img', // Obrigatório
-				    'label'       => __( 'Imagem do destaque', 'odin' ), // Obrigatório
-				    'type'        => 'image', // Obrigatório
-				    'default'     => '', // Opcional (deve ser o id de uma imagem em mídia)
-				    'description' => __( 'Imagem da Seção de destaque', 'odin' ), // Opcional
-				),
-				
+
+
             )
         ),
 		'parallax_section' => array(
@@ -87,7 +88,7 @@ $odin_theme_options->set_fields(
 				),
             )
         ),
-		
+
 		'contato_section' => array(
             'tab'   => 'contato_tab', // Sessão da aba odin_general
             'title' => __( 'Informações para o contato do grupo', 'odin' ),

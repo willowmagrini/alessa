@@ -21,7 +21,15 @@
 
 // masonry
 // *, *:before, *:after {box-sizing:  border-box !important;}
-
+.clear{
+  clear: both;
+}
+#header{
+  // display: none!important;
+}
+ #content{
+  // display: none;
+}
 .googlemaps {
     position: relative;
     padding-bottom: 56.25%;
@@ -131,10 +139,21 @@ body{
     display: none;
     }
     #fim{
+      // display: none;
       position: absolute;
       bottom: 0;
+      background: rgba(82,33,148,0.68);
+      color: #fff;
+      text-align: justify;
+      font-size: 28px;
+      background: rgba(82, 33, 148, 0.87);
+      padding: 57px;
+      opacity: 0;
+      z-index: 9 ;
     }
     .parallax {
+      z-index:999;
+      position: relative;
       height: 500px; /* fallback for older browsers */
       height: 100vh;
       overflow-x: hidden;
@@ -153,13 +172,14 @@ body{
 
     .parallax__layer {
       div{
+        width: 600px;
+        right:30px;
         font: normal 20px/normal "Warnes", Helvetica, sans-serif;
             color: #fff;
             text-decoration: normal;
             text-align: center;
             -o-text-overflow: clip;
             text-overflow: clip;
-            white-space: pre;
             text-shadow: 0 0 10px #fff, 0 0 18px #ff00de;
             -webkit-transition: all 20ms cubic-bezier(0.42, 0, 0.58, 1);
             -moz-transition: all 20ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -170,7 +190,6 @@ body{
             color: #fff;
             padding: 21px;
             font: normal 20px/normal "Warnes", Helvetica, sans-serif;
-            border-radius: 18px;
           }
       position: absolute;
       top: 0;
@@ -180,12 +199,16 @@ body{
     }
 
     .parallax__layer--fore {
+      z-index: 1;
       -webkit-transform: translateZ(90px) scale(.7);
       transform: translateZ(90px) scale(.7);
-      z-index: 1;
+
+
+
       div{
-        top: 41%;
-        left: 75%;
+        bottom: 0;
+        // top: 41%;
+        // left: 75%;
       }
     }
 
@@ -194,48 +217,58 @@ body{
       transform: translateZ(0);
       z-index: 4;
       div{
-        bottom: 4%;
-        left: 75%;
+        // bottom: 4%;
+        // left: 75%;
       }
     }
     .parallax__layer--base.vel3{
       -webkit-transform: translateZ(-100px) scale(1.3)!important;
       transform: translateZ(-100px) scale(1.3)!important;
       div{
-        bottom: 4%;
-        left: 75%;
+        // bottom: 4%;
+        // left: 75%;
       }
     }
     .vel2{
       -webkit-transform: translateZ(-100px) scale(1.3)!important;
       transform: translateZ(-100px) scale(1.3)!important;
+
     }
     .parallax__layer--back {
+      -webkit-transform: translateZ(-600px) scale(3);
+      transform: translateZ(-600px) scale(3);
       div.title3{
-        top: 67%;
-        left: 75%;
+        bottom: 186px;
+
+        // top: 67%;
+        // left: 75%;
       }
       div.title2{
-        top: 55%;
-        left: 75%;
+        width: 616px;
+        right: 14px;
+        bottom:0;
+        // top: 55%;
+        // left: 75%;
       }
       div{
-        top: 70%;
-        left: 75%;
+        // top: 70%;
+        // left: 75%;
       }
-      -webkit-transform: translateZ(-300px) scale(2);
-      transform: translateZ(-300px) scale(2);
+
       z-index: 3;
     }
 
     .parallax__layer--deep {
       div{
-        top: 25%;
-        right: 9%;
-        font-size: 40px;
+        // top: 25%;
+        // right: 9%;
+        font-size: 24px;
+        bottom: 291px;
+
       }
-      -webkit-transform: translateZ(-600px) scale(3);
-      transform: translateZ(-600px) scale(3);
+      -webkit-transform: translateZ(-300px) scale(2);
+      transform: translateZ(-300px) scale(2);
+
       z-index: 2;
     }
 
@@ -418,6 +451,9 @@ body{
         min-height: calc(100vh );
         min-height: -webkit-calc(100vh);
         min-height: -moz-calc(100vh );
+        a{
+          color:red;
+        }
     }
     #piano{
             background-image: url("../images/piano.jpg");
@@ -457,6 +493,8 @@ body{
             a img{
                 right: 14%;
                  top: 17%;
+                 width: 40vw;
+
             }
 
         }
@@ -592,6 +630,7 @@ body{
         .titulo-contato{
             margin:0 auto;
             display: block;
+            max-width:90%;
         }
 
         #interno-contato{
@@ -1126,7 +1165,7 @@ body{
         }
     }
 }
-.single,.page, .page-template-page-blog, .page-template-page-ritaleena{
+.single,.page, .page-template-page-blog, .page-template-page-ritaleena, .error404 {
     #comments{
         .media-left{
             display: none;
@@ -1146,6 +1185,7 @@ body{
     iframe{
         margin: 0 auto;
         display: block;
+        max-width:100%;
     }
     .faixa-preta{
         width: 100%;
@@ -1178,6 +1218,7 @@ body{
         min-height: 100vh;
         min-height: calc(100vh - 102px);
         background-color: rgba(255,255,255,0.58);
+
 
     }
     .gss-info{
@@ -1365,6 +1406,65 @@ body {
 /* Responsive Stuff */
 
 
+@media (max-width: 1200px) {
+  .single .entry-content, .page .entry-content, .page-template-page-blog .entry-content, .page-template-page-ritaleena .entry-content, .error404 .entry-content{
+    max-width: 90%;
+  }
+  .home{
+    #agenda{
+      #eventos-container{
+        height: auto;
+        width:auto;
+
+        .eventos-interno {
+          position: relative;
+          height: initial;
+          width: 95%;
+          margin: 0 auto;
+          float: none;
+        }
+        .evento {
+          border: solid black 5px;
+        }
+        .bola{
+          display: none!important;
+        }
+      }
+    }
+    .bordas{
+      display: none;
+    }
+  }
+
+}
+@media (max-width: 1080px) {
+  .single h1.entry-title, .page h1.entry-title, .page-template-page-blog h1.entry-title, .page-template-page-ritaleena h1.entry-title, .error404 h1.entry-title{
+    margin-bottom: 0;
+    margin-top: 30px;
+  }
+  .home{
+    #contato {
+      #interno-contato {
+        #socials-contato {
+          #facebook-feed {
+            padding-top: 48px;
+
+            .owl-item:nth-child(2) .social-link-text  {
+              top: initial;
+              left: initial;
+            }
+            .social-link-text {
+              top: initial;
+              left: initial;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
 @media (max-width: 979px) {
     .navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
     padding: 0px;
@@ -1372,8 +1472,131 @@ body {
     .navbar-fixed-top, .navbar-fixed-bottom {
     position: fixed;
     }
+    .home {
+      #fim{
+      font-size:22px;
+      }
+      #ritaleena #release{
+        margin: 0 20px;
+      }
+    }
+    .navbar-default .navbar-nav>li>a{
+      padding: 9px;
+      font: normal 18px/normal "Warnes", Helvetica, sans-serif;
+    }
+
 }
 @media (max-width: 768px) {
+
+  .home .parallax__layer div{
+    width: 100%;
+    right: 0;
+    font: normal 15px/normal "Warnes", Helvetica, s
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    width: 38px;
+    height: 7px;
+    box-shadow: 0 0 12px #fff, 0 0 18px #ff00de;
+    -webkit-transition: all 20ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 20ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 20ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 20ms cubic-bezier(0.42, 0, 0.58, 1);
+    background-color: transparent;
+  }
+  .navbar-brand{
+    margin: 0;
+    padding: 0;
+    height: auto;
+    font: normal 20px/normal "Warnes", Helvetica, sans-serif;
+    color: #fff;
+    text-decoration: normal;
+    text-shadow: 0 0 10px #fff, 0 0 18px #ff00de;
+    -webkit-transition: all 20ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 20ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 20ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 20ms cubic-bezier(0.42, 0, 0.58, 1);
+    background-color: transparent;
+  }
+  #header{
+    padding: 10px 0 10px;
+  }
+  .navbar {
+    min-height: 40px;
+    padding: 10px 35px;
+
+  }
+  .navbar-default .navbar-toggle{
+    border-color:transparent;
+    padding:0;
+    margin: 0;
+
+  }
+    .home{
+
+      #contato,#pianos{
+        padding-top: 55px;
+      }
+      #pianos{
+        .ver-piano{
+            margin-top: 0;
+        }
+        h1 {
+        font-size: 20vw;
+        }
+        h2{
+          font-size: 8vw;
+
+        }
+      }
+      #ritaleena .img-release {
+        width: 100%;
+          max-width: 90%;
+          margin: 50px auto;
+          text-align: center;
+      }
+      #linda {
+        padding: 120px 0;
+        #img-linda {
+          position: absolute;
+          right: 20px;
+          top: -209px;
+          width: 317px;
+
+        }
+
+      }
+      .interno{
+        max-width: 90%;
+        padding-right: 0;
+        padding-left: 0;
+      }
+      #sound-trilha {
+          min-height: 10px;
+          padding-top: 0;
+          height: 48vh;
+      }
+      #fim{
+        font-size: 16px;
+      }
+      #piano{
+        min-height: 62vh;
+      }
+      #contato{
+        #interno-contato{
+          > div{
+            float:none!important;
+          }
+        }
+        
+      }
+      #agenda div.neon {
+        font-size: 50px;
+        padding: 54px 0 20px;
+
+
+      }
+
+    }
     .navbar.navbar-fixed-top{
         position: static;
     }
@@ -1393,7 +1616,7 @@ body {
     }
     #header {
         text-align: center;
-        padding: 60px 0px 30px;
+        // padding: 60px 0px 30px;
     }
     #header h1{
         margin: 10px 0;
@@ -1422,11 +1645,29 @@ body {
     h6 {
         font-size: 12px;
     }
-
 }
 
 
 @media (max-width: 480px) {
+  .home{
+    #linda{
+      #img-linda{
+
+      }
+    }
+    #sound-trilha {
+      #soundart a img {
+        top: 66%;
+        left: 3%;
+        width: 59vw;
+      }
+      #trilhas a img {
+        right: 10%;
+        top: 4%;
+        width: 57vw;
+      }
+    }
+  }
     .navbar-fixed-top, .navbar-fixed-bottom {
     position: static;
     }

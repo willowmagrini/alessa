@@ -1,7 +1,7 @@
-<?php 
+<?php
 // funções do ajax
 function mostra_trampo_func(){
-	
+
 	$tipo=$_POST['trampo'];
 	$resposta=array();
 	$resposta['mensagem']= "fez ação e chamou funcao";
@@ -16,17 +16,17 @@ function mostra_trampo_func(){
 	$resposta['html'].= '<div id="slider-trabalhos">';
 	$args = array('post_type' => $tipo, 'posts_per_page' => -1);
    	$trabalho_query = new WP_Query($args);
-   if($trabalho_query->have_posts()) : 
+   if($trabalho_query->have_posts()) :
    		$cont=0;
 	   	while ( $trabalho_query->have_posts() ) {
 			$trabalho_query->the_post();
-			$resposta['html'].= '<a href="'.get_permalink( ).'"><article class="cada-trabalho" id="'.$cont.'" >'.get_the_post_thumbnail( $trabalho_query->post->ID, 'vertical', array('id'=>'thumb_trabalho') ).'<h3>' . get_the_title().'</h3>';
+			$resposta['html'].= '<a href="'.get_permalink( ).'"><article class="cada-trabalho" id="'.$cont.'" >'.get_the_post_thumbnail( $trabalho_query->post->ID, 'horizontal', array('id'=>'thumb_trabalho') ).'<h3>' . get_the_title().'</h3>';
 			$resposta['html'] .= '</article></a>';
 			$count++;
 		}
-   else: 
+   else:
       $resposta['html'] = 'Nenhum SoundArt';
-   	
+
    endif;
    	$resposta['html'].= '</div><!-- id="slider-trabalhos"-->';
 

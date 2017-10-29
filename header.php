@@ -23,9 +23,9 @@
 	<?php wp_head(); ?>
 </head>
 
-<body 
-	<?php 
-	
+<body
+	<?php
+
 	if (get_field('imagem_do_fundo',$post->ID)){
 
 		echo 'style="background-image:url('.get_field('imagem_do_fundo',$post->ID)['url'].');background-attachment:fixed;"';
@@ -34,7 +34,7 @@
 	// 	$pianos=get_page_by_title( 'Pianos');
 	// }
 	// if ( is_page_template('page-ritaleena.php')){
-		
+
 	// }
 
 	// 	// $pianos=get_page( '24');
@@ -49,7 +49,7 @@
 	// if ( is_page_template('page-blog.php') OR is_singular('post' ) OR is_page_template('page-ritaleena.php')) {
 	// 	echo 'style="'.$estilo.'"';
 	// }
-	body_class(); 
+	body_class();
 	?>
 	>
 	<a id="skippy" class="sr-only sr-only-focusable" href="#content">
@@ -60,7 +60,10 @@
 
 	<header id="header" role="banner">
 		<div class="container">
-			
+			<form style="display:none">
+				<input type="text" name="" value="">
+				<input type="submit" name="" value="">
+			</form>
 
 			<div id="main-navigation" class="navbar navbar-default">
 				<div class="navbar-header">
